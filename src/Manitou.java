@@ -2,7 +2,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 
-public class Manitou implements Contrôleur {
+public class Manitou implements Controleur {
 
 	public Manitou() {
 		super();
