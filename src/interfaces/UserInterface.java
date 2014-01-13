@@ -3,19 +3,12 @@ package interfaces;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class UserInterface implements GraphicInterface{
+public class UserInterface implements UIInterface{
 
 	@Override
 	public JFrame instanceOfWindow(String name) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD:src/interfaces/Graphics.java
-		JFrame window = new JFrame(name);
-		window.setVisible(true);
-		window.setSize(5, 5);
-		return window;
-=======
 		return null;
->>>>>>> refs/remotes/ProjetPACT/master:src/interfaces/UserInterface.java
 	}
 
 	@Override
