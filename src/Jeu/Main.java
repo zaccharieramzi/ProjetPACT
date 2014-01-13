@@ -1,4 +1,4 @@
-import Jeu.Manitou;
+package Jeu;
 
 
 public class Main {

@@ -9,6 +9,8 @@ public class Graphics implements GraphicInterface{
 	public JFrame instanceOfWindow(String name) {
 		// TODO Auto-generated method stub
 		JFrame window = new JFrame(name);
+		window.setVisible(true);
+		window.setSize(5, 5);
 		return window;
 	}
 
