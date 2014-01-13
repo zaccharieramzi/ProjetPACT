@@ -1,3 +1,4 @@
+package Jeu;
 
 public class Balle extends Tools implements BalleInterface{
 

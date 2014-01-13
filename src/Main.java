@@ -1,3 +1,5 @@
+import Jeu.Manitou;
+
 
 public class Main {
 

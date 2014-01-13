@@ -1,3 +1,4 @@
+package Jeu;
 
 public interface DecorInterface {
 public void Rebond(BalleInterface b);

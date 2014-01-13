@@ -1,3 +1,4 @@
+package Jeu;
 
 public interface ScoreInterface {
 public int getP1Score();

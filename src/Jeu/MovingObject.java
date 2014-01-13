@@ -1,3 +1,4 @@
+package Jeu;
 
 public interface MovingObject {
 public double getX();
