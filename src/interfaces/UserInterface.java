@@ -3,13 +3,12 @@ package interfaces;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class Graphics implements GraphicInterface{
+public class UserInterface implements GraphicInterface{
 
 	@Override
 	public JFrame instanceOfWindow(String name) {
 		// TODO Auto-generated method stub
-		JFrame window = new JFrame(name);
-		return window;
+		return null;
 	}
 
 	@Override
@@ -23,6 +22,5 @@ public class Graphics implements GraphicInterface{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 
 }
