@@ -10,29 +10,29 @@ public class MainTest {
 
 	public static void main(String[] args) {
 		
-			 // Instanciation d’une fenêtre.
+			 // Instanciation dï¿½une fenï¿½tre.
 			//todo
-			 JFrame mainWindow = new JFrame("ma fenêtre");
+			 JFrame mainWindow = new JFrame("ma fenetre");
 		
 			 // Ajout du comportement lorsque l'utilisateur click sur le bouton
-			 // de fermeture de la fenêtre (bouton rouge sous Mac OS X).
+			 // de fermeture de la fenï¿½tre (bouton rouge sous Mac OS X).
 			 mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) ;
 			
 			 // Instanciation d'un bouton.
 			 JButton button = new JButton("Hello World") ;
 		 
-			 // Ajout du bouton au panneau de la fenêtre.
+			 // Ajout du bouton au panneau de la fenï¿½tre.
 			 Container defaultPanel = mainWindow.getContentPane() ;
 			 defaultPanel.add(button) ;
 			
-			 // Centrage de la fenêtre par rapport à l'écran.
+			 // Centrage de la fenï¿½tre par rapport ï¿½ l'ï¿½cran.
 			 mainWindow.setLocationRelativeTo(null);
 			 
-			 // Redimensionnement selon les dimensions optimales spécifiées par les
+			 // Redimensionnement selon les dimensions optimales spï¿½cifiï¿½es par les
 			 // composants graphiques.
 			 mainWindow.pack() ;
 			 
-			 // Affichage de la fenêtre. Bloque tant que la fenêtre n'est pas fermée !
+			 // Affichage de la fenï¿½tre. Bloque tant que la fenï¿½tre n'est pas fermï¿½e !
 			 mainWindow.setVisible(true) ;
 			}
 
