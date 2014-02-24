@@ -7,9 +7,11 @@ public interface FenetreInterface {
 	
 	String setText(String titreDeLaFenetre);
 	Controleur createJeu();
-	BoutonInterface createBouton(BoutonInterface bouton, String typeBouton);
+	Controleur setControleur(Controleur controleur);
+	BoutonInterface createBouton(String typeBouton);
 	FenetreInterface createFenetre(FenetreInterface fenetre, String typeFenetre);
 	DecorInterface modifierDecor(DecorInterface decor);
+	DecorInterface changerDecorPropose(DecorInterface decor);
 	
 	
 	
