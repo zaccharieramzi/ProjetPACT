@@ -9,7 +9,7 @@ public class Manitou implements Controleur {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	private TableDePingPong decor=new TableDePingPong(10,6,0);
+	private DecorInterface decor=new TableDePingPong(10,6,0);
 	private int speed=1;
 	private double alea=Math.random()*Math.PI*2;
 	private Balle balle = new Balle(0,0,0,0,alea,speed,1);
@@ -137,6 +137,11 @@ public class Manitou implements Controleur {
 			}
 		}
 		
+	}
+	@Override
+	public void setDecor(DecorInterface decor) {
+		// TODO Auto-generated method stub
+		this.decor= decor;
 	}
 
 	
