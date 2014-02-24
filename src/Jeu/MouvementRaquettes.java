@@ -5,7 +5,8 @@ public class MouvementRaquettes implements Runnable {
 	RaquetteInterface raquetteP1;
 	RaquetteInterface raquetteP2;
 	DecorInterface decor;
-	
+	int j1;
+	int j2;
 	public MouvementRaquettes(RaquetteInterface raquetteP1,RaquetteInterface raquetteP2,DecorInterface decor){
 		
 		this.raquetteP1=raquetteP1;
