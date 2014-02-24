@@ -1,6 +1,6 @@
 package Jeu;
 
-public class MouvementRaquettes {
+public class MouvementRaquettes implements Runnable {
 	
 	RaquetteInterface raquetteP1;
 	RaquetteInterface raquetteP2;
@@ -13,7 +13,7 @@ public class MouvementRaquettes {
 		this.decor=decor;
 	}
 	
-
+	public void run(){
 	if (j1==1){
 		double y = raquetteP1.getY();
 		raquetteP1.setY(y-raquetteP1.getSpeed());
@@ -64,5 +64,6 @@ public class MouvementRaquettes {
 		}
 	}
 	
+	}
 
 }

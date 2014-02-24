@@ -1,6 +1,6 @@
 package Jeu;
 
-public class MouvementBalle {
+public class MouvementBalle implements Runnable {
 
 	Balle balle;
 	DecorInterface decor;
@@ -22,7 +22,7 @@ public class MouvementBalle {
 		this.raquetteP2=raquetteP2;
 		this.score=score;
 	};
-	
+	public void run() {
 	balle.setX(x+speed*Math.sin(theta)*Math.cos(phi));
 	balle.setY(y+speed*Math.sin(theta)*Math.sin(phi));
 	balle.setZ(z+speed*Math.cos(theta));
