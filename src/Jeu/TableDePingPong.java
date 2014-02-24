@@ -5,6 +5,7 @@ public class TableDePingPong  implements DecorInterface{
 	private final double x;
 	private final double y;
 	private final double z;
+	private boolean balleStaysInTheField=true;
 	
 	public TableDePingPong(double x, double y, double z) {
 		super();
@@ -55,6 +56,18 @@ public class TableDePingPong  implements DecorInterface{
 	public double getZ() {
 		// TODO Auto-generated method stub
 		return this.z;
+	}
+
+	@Override
+	public boolean getBalleStaysInTheField() {
+		// TODO Auto-generated method stub
+		return this.balleStaysInTheField;
+	}
+
+	@Override
+	public void setBalleStaysInTheField(boolean position) {
+		// TODO Auto-generated method stub
+		this.balleStaysInTheField=position;
 	}
 
 }

@@ -14,7 +14,8 @@ public class MouvementBalle implements Runnable {
 	double phi = balle.getAnglePhi();
 	double alea;
 	int speed= balle.getSpeed();
-	boolean balleStaysInTheField= true;
+	boolean balleStaysInTheField=decor.getBalleStaysInTheField();
+	
 	
 	public MouvementBalle(BalleInterface balle, DecorInterface decor, RaquetteInterface raquetteP1, RaquetteInterface raquetteP2, ScoreInterface score){
 		this.balle=(Balle) balle;
@@ -40,7 +41,7 @@ public class MouvementBalle implements Runnable {
 			if (balle.staysInTheField(raquetteP1)){
 				raquetteP1.Rebond(balle);
 			}
-			else { this.balleStaysInTheField=false;
+			else { this.decor.setBalleStaysInTheField(false);
 				alea=Math.random()*Math.PI*2;
 				int i=score.getP2Score();
 				score.setP2Score(i+1);
@@ -55,7 +56,7 @@ public class MouvementBalle implements Runnable {
 				raquetteP2.Rebond(balle);
 			}
 			else { 
-				this.balleStaysInTheField=false;
+				this.decor.setBalleStaysInTheField(false);
 				alea=Math.random()*Math.PI*2;
 				int i=score.getP1Score();
 				score.setP1Score(i+1);

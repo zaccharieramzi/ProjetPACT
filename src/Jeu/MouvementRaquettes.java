@@ -7,6 +7,7 @@ public class MouvementRaquettes implements Runnable {
 	DecorInterface decor;
 	int j1;
 	int j2;
+	boolean balleStaysInTheField;
 	public MouvementRaquettes(RaquetteInterface raquetteP1,RaquetteInterface raquetteP2,DecorInterface decor){
 		
 		this.raquetteP1=raquetteP1;
@@ -15,6 +16,8 @@ public class MouvementRaquettes implements Runnable {
 	}
 	
 	public void run(){
+		while(this.balleStaysInTheField){
+			
 	if (j1==1){
 		double y = raquetteP1.getY();
 		raquetteP1.setY(y-raquetteP1.getSpeed());
@@ -64,7 +67,8 @@ public class MouvementRaquettes implements Runnable {
 			}
 		}
 	}
+	this.balleStaysInTheField=decor.getBalleStaysInTheField();
 	
 	}
-
+	}
 }
