@@ -1,6 +1,8 @@
 package GUI;
 
-public class MainTest {
+import javax.swing.JFrame;
+
+public class Main {
 
 	/**
 	 * @param args
@@ -10,6 +12,7 @@ public class MainTest {
 
 		Fenetre fenetreTest= new Fenetre("Menu principal");
 		fenetreTest.createBouton("Stats");
+		
 	}
 
 }

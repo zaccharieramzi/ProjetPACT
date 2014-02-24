@@ -22,6 +22,7 @@ public class Fenetre implements FenetreInterface {
 		this.fenetre=mainwindow;
 		fenetre.setLocationRelativeTo(null);
 		fenetre.setVisible(true);
+		fenetre.pack();
 		Manitou manitou = new Manitou();
 		this.controleur = manitou;
 	}
@@ -63,7 +64,7 @@ public class Fenetre implements FenetreInterface {
 	public FenetreInterface createFenetre(String typeFenetre) {
 		// TODO Auto-generated method stub
 		Fenetre fenetre = new Fenetre(typeFenetre);
-		return null;
+		return fenetre;
 	}
 
 	@Override
