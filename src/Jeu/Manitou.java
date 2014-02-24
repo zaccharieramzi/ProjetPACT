@@ -16,24 +16,25 @@ public class Manitou implements Controleur {
 	private Raquette raquetteP1=new Raquette(-decor.getX()/2,0,0,speed,5);
 	private Raquette raquetteP2=new Raquette(decor.getX()/2,0,0,speed,5);
 	private Score score=new Score(0,0);
+	private MouvementBalle laBalle;
+	private MouvementRaquettes lesRaquettes;
 	
 	
 	
 	@Override
 	public void refresh() throws InterruptedException {
 		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
+		
 		while (score.limiteAtteinte(10)){
+			laBalle= new MouvementBalle(balle, decor, raquetteP1, raquetteP2, score );
+			lesRaquettes = new MouvementRaquettes( raquetteP1, raquetteP2, decor);
+			new Thread(laBalle).start();
+			new Thread(lesRaquettes).start();
 			
-	
-			int j = 0;
 			
-			System.out.println("Choisissez votre direction : 1 pour aller à droite , 0 pour aller à gauche!");
-			j=sc.nextInt();
-			calculatePositions(j,1);
-			Thread.sleep(500);
+			
 		}
-		sc.close();
+		
 	}
 	@Override
 	public void setDecor(DecorInterface decor) {

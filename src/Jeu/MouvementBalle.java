@@ -14,6 +14,7 @@ public class MouvementBalle implements Runnable {
 	double phi = balle.getAnglePhi();
 	double alea;
 	int speed= balle.getSpeed();
+	boolean balleStaysInTheField= true;
 	
 	public MouvementBalle(BalleInterface balle, DecorInterface decor, RaquetteInterface raquetteP1, RaquetteInterface raquetteP2, ScoreInterface score){
 		this.balle=(Balle) balle;
@@ -23,6 +24,7 @@ public class MouvementBalle implements Runnable {
 		this.score=score;
 	};
 	public void run() {
+		while(this.balleStaysInTheField){
 	balle.setX(x+speed*Math.sin(theta)*Math.cos(phi));
 	balle.setY(y+speed*Math.sin(theta)*Math.sin(phi));
 	balle.setZ(z+speed*Math.cos(theta));
@@ -38,7 +40,7 @@ public class MouvementBalle implements Runnable {
 			if (balle.staysInTheField(raquetteP1)){
 				raquetteP1.Rebond(balle);
 			}
-			else { 
+			else { this.balleStaysInTheField=false;
 				alea=Math.random()*Math.PI*2;
 				int i=score.getP2Score();
 				score.setP2Score(i+1);
@@ -53,6 +55,7 @@ public class MouvementBalle implements Runnable {
 				raquetteP2.Rebond(balle);
 			}
 			else { 
+				this.balleStaysInTheField=false;
 				alea=Math.random()*Math.PI*2;
 				int i=score.getP1Score();
 				score.setP1Score(i+1);
@@ -63,6 +66,13 @@ public class MouvementBalle implements Runnable {
 				/*FIN DE LA MANCHE*/
 			}
 		}
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	}
 }
 }
