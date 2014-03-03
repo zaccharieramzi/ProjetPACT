@@ -8,11 +8,13 @@ public class MouvementRaquettes implements Runnable {
 	int j1;
 	int j2;
 	boolean balleStaysInTheField;
-	public MouvementRaquettes(RaquetteInterface raquetteP1,RaquetteInterface raquetteP2,DecorInterface decor){
+	public MouvementRaquettes(RaquetteInterface raquetteP1,RaquetteInterface raquetteP2,DecorInterface decor, int directionP1, int directionP2){
 		
 		this.raquetteP1=raquetteP1;
 		this.raquetteP2=raquetteP2;
 		this.decor=decor;
+		this.j1=directionP1;
+		this.j2=directionP2;
 	}
 	
 	public void run(){
