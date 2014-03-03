@@ -1,8 +1,10 @@
 package Jeu;
 
 public interface Controleur {
-public void refresh() throws InterruptedException;
-void setDecor(DecorInterface decor);
+void lancerJeu() throws InterruptedException;
+void setDirectionP1(int direction);
+void setDirectionP2(int direction);
+void setSpeed(int vitesse);
 
 
 }
