@@ -29,7 +29,7 @@ public class Manitou implements Controleur {
 		
 		while (score.limiteAtteinte(10)){
 			laBalle= new MouvementBalle(balle, decor, raquetteP1, raquetteP2, score );
-			lesRaquettes = new MouvementRaquettes( raquetteP1, raquetteP2, decor, directionP1, directionP2);
+			lesRaquettes = new MouvementRaquettes(raquetteP1, raquetteP2, decor, directionP1, directionP2);
 			new Thread(laBalle).start();
 			new Thread(lesRaquettes).start();
 			
