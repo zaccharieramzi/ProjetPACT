@@ -55,6 +55,24 @@ public class Manitou implements Controleur {
 		this.speed=vitesse;
 	}
 
+	@Override
+	public Balle getBalle() {
+		// TODO Auto-generated method stub
+		return this.balle;
+	}
+
+	@Override
+	public Raquette getRaquetteP1() {
+		// TODO Auto-generated method stub
+		return this.raquetteP1;
+	}
+
+	@Override
+	public Raquette getRaquetteP2() {
+		// TODO Auto-generated method stub
+		return this.raquetteP2;
+	}
+
 	
 
 }
