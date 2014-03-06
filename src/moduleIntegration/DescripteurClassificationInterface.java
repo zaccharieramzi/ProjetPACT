@@ -1,7 +1,5 @@
 package moduleIntegration;
 
-import moduleClassif.ClassifieurFaible;
-
 public interface DescripteurClassificationInterface {
 	
 	public int[][] getMatriceDescripteur();

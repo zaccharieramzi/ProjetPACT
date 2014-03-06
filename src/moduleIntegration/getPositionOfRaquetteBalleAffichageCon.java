@@ -3,7 +3,7 @@ package moduleIntegration;
 import Jeu.Balle;
 import Jeu.Raquette;
 
-public interface getPositionOfRaquetteBalleAffichageCon {
+public interface GetPositionOfRaquetteBalleAffichageCon {
 	
 	Balle getBalle();
 	Raquette getRaquetteP1();
