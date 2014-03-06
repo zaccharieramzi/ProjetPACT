@@ -73,6 +73,6 @@ public class Manitou implements Controleur {
 		return this.raquetteP2;
 	}
 
-	
+	// Il faut rajouter des setters et getters concernant les 4 differents décors et les 4 différents types de raquette
 
 }
