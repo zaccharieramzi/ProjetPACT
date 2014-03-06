@@ -1,9 +1,9 @@
 package Jeu;
-import java.io.InputStream;
-import java.util.Scanner;
+import moduleIntegration.*;
 
 
-public class Manitou implements Controleur {
+public class Manitou implements SetDirectionInterfaceClassifCon, getPositionOfRaquetteBalleAffichageCon,
+								IGControleurInterface{
 
 	public Manitou() {
 		super();
@@ -71,6 +71,12 @@ public class Manitou implements Controleur {
 	public Raquette getRaquetteP2() {
 		// TODO Auto-generated method stub
 		return this.raquetteP2;
+	}
+
+	@Override
+	public void setMode(int mode) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	// Il faut rajouter des setters et getters concernant les 4 differents décors et les 4 différents types de raquette
