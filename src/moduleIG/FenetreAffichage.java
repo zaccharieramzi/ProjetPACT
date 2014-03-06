@@ -2,142 +2,149 @@ package moduleIG;
 
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import Jeu.Manitou;
 
 import java.awt.Container;
-import javax.swing.JButton;
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 	public class FenetreAffichage {
 		
-		private JFrame fenetre;
-		private Manitou manitou;
-	
-	
-	public FenetreAffichage()
-	{			
-	}
-	
-	
-
-	/*
-	 * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
-	 *
-	 * Redistribution and use in source and binary forms, with or without
-	 * modification, are permitted provided that the following conditions
-	 * are met:
-	 *
-	 *   - Redistributions of source code must retain the above copyright
-	 *     notice, this list of conditions and the following disclaimer.
-	 *
-	 *   - Redistributions in binary form must reproduce the above copyright
-	 *     notice, this list of conditions and the following disclaimer in the
-	 *     documentation and/or other materials provided with the distribution.
-	 *
-	 *   - Neither the name of Oracle or the names of its
-	 *     contributors may be used to endorse or promote products derived
-	 *     from this software without specific prior written permission.
-	 *
-	 * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
-	 * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-	 * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-	 * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
-	 * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-	 * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-	 * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-	 * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-	 * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-	 * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-	 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	 */ 
-
-
-
-	/*
-	 * BorderLayoutDemo.java
-	 *
-	 */
-
-
-	    public static boolean RIGHT_TO_LEFT = false;
-	    
-	    public static void addComponentsToPane(Container pane) {
+		private static JFrame fenetre;
+		private static Manitou manitou;
+		public static boolean RIGHT_TO_LEFT = false;
+		JPanel panneau = (JPanel) this.fenetre.getContentPane();
+		public FenetreAffichage()
+	{	
+		this.fenetre= new JFrame("Menu principal");
+		this.manitou= new Manitou();
+	};
+		public void addComponentsToPane(Container pane) 
+		{
 	        
 	        if (!(pane.getLayout() instanceof BorderLayout)) {
 	            pane.add(new JLabel("Container doesn't use BorderLayout!"));
 	            return;
-	        }
+	        };
 	        
 	        if (RIGHT_TO_LEFT) {
 	            pane.setComponentOrientation(
 	                    java.awt.ComponentOrientation.RIGHT_TO_LEFT);
-	        }
+	        };
 	        
-	        JButton button = new JButton("Facile (PAGE_START)");
-	        pane.add(button, BorderLayout.PAGE_START);
+	        JButton buttonFacile = new JButton("Facile");
+buttonFacile.addMouseListener(new MouseAdapter() {
+	        	
+	        	public void MouseClicked(MouseEvent e){
+	        	manitou.setSpeed(1);
+	        	};
+	        });
+	        pane.add(buttonFacile, BorderLayout.PAGE_START);
 	        
 	        //Make the center component big, since that's the
 	        //typical usage of BorderLayout.
-	        button = new JButton("Normal (CENTER)");
-	        button.setPreferredSize(new Dimension(200, 100));
-	        pane.add(button, BorderLayout.CENTER);
-	        
-	        button = new JButton("Difficile (LINE_START)");
-	        pane.add(button, BorderLayout.LINE_START);
-	        
-	        button = new JButton("Expert (PAGE_END)");
-	        pane.add(button, BorderLayout.PAGE_END);
-	        
-	        button = new JButton("Jouer (LINE_END)");
-	        pane.add(button, BorderLayout.LINE_END);
-	    }
-	    
-	    /**
-	     * Create the GUI and show it.  For thread safety,
-	     * this method should be invoked from the
-	     * event dispatch thread.
-	     */
-	    private static void createAndShowGUI() {
-	        
-	        //Create and set up the window.
-	        JFrame frame = new JFrame("BorderLayoutDemo");
-	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        //Set up the content pane.
-	        addComponentsToPane(frame.getContentPane());
-	        //Use the content pane's default BorderLayout. No need for
-	        //setLayout(new BorderLayout());
-	        //Display the window.
-	        frame.pack();
-	        frame.setVisible(true);
-	    }
-	    
-	    public static void main(String[] args) {
-	        /* Use an appropriate Look and Feel */
-	        try {
-	            //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-	            UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-	        } catch (UnsupportedLookAndFeelException ex) {
-	            ex.printStackTrace();
-	        } catch (IllegalAccessException ex) {
-	            ex.printStackTrace();
-	        } catch (InstantiationException ex) {
-	            ex.printStackTrace();
-	        } catch (ClassNotFoundException ex) {
-	            ex.printStackTrace();
-	        }
-	        /* Turn off metal's use bold fonts */
-	        UIManager.put("swing.boldMetal", Boolean.FALSE);
-	        
-	        //Schedule a job for the event dispatch thread:
-	        //creating and showing this application's GUI.
-	        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-	            public void run() {
-	                createAndShowGUI();
-	            }
+	        JButton buttonNormal = new JButton("Normal");
+	        buttonNormal.setPreferredSize(new Dimension(200, 100));
+	        buttonNormal.addMouseListener(new MouseAdapter() {
+	        	
+	        	public void MouseClicked(MouseEvent e){
+	        	manitou.setSpeed(2);
+	        	};
 	        });
+	        pane.add(buttonNormal, BorderLayout.CENTER);
+	        
+	        JButton buttonDifficile = new JButton("Difficile");
+	        buttonDifficile.addMouseListener(new MouseAdapter() {
+	        	
+	        	public void MouseClicked(MouseEvent e){
+	        	manitou.setSpeed(3);
+	        	};
+	        });
+	        pane.add(buttonDifficile, BorderLayout.LINE_START);
+	        
+	        JButton buttonExpert = new JButton("Expert");
+buttonExpert.addMouseListener(new MouseAdapter() {
+	        	
+	        	public void MouseClicked(MouseEvent e){
+	        	manitou.setSpeed(4);
+	        	};
+	        });
+	        pane.add(buttonExpert, BorderLayout.PAGE_END);
+	        
+	        JButton buttonJouer = new JButton("Jouer");
+buttonJouer.addMouseListener(new MouseAdapter() {
+	        	
+	        	public void MouseClicked(MouseEvent e) throws InterruptedException{
+	        	fenetre.getContentPane().removeAll();
+	        	addComponentsToPane2(fenetre.getContentPane());
+	        	};
+	        });
+	        pane.add(buttonJouer, BorderLayout.LINE_END);
 	    }
+		public void addComponentsToPane2(Container pane) 
+		{
+	        
+	        if (!(pane.getLayout() instanceof BorderLayout)) {
+	            pane.add(new JLabel("Container doesn't use BorderLayout!"));
+	            return;
+	        };
+	        
+	        if (RIGHT_TO_LEFT) {
+	            pane.setComponentOrientation(
+	                    java.awt.ComponentOrientation.RIGHT_TO_LEFT);
+	        };
+	        
+	        JButton buttonFacile = new JButton("J1vsJ2");
+buttonFacile.addMouseListener(new MouseAdapter() {
+	        	
+	        	public void MouseClicked(MouseEvent e){
+	        	
+	        	};
+	        });
+	        pane.add(buttonFacile, BorderLayout.PAGE_START);
+	        
+	        //Make the center component big, since that's the
+	        //typical usage of BorderLayout.
+	        JButton buttonNormal = new JButton("J1vsIA");
+	        buttonNormal.setPreferredSize(new Dimension(200, 100));
+	        buttonNormal.addMouseListener(new MouseAdapter() {
+	        	
+	        	public void MouseClicked(MouseEvent e){
+	        	
+	        	};
+	        });
+	        pane.add(buttonNormal, BorderLayout.CENTER);
+	        
+	        JButton buttonDifficile = new JButton("J1&J2vsIA");
+	        buttonDifficile.addMouseListener(new MouseAdapter() {
+	        	
+	        	public void MouseClicked(MouseEvent e){
+	        	
+	        	};
+	        });
+	        pane.add(buttonDifficile, BorderLayout.LINE_START);
+	        
+	        
+	        
+	        JButton buttonJouer = new JButton("Jouer");
+buttonJouer.addMouseListener(new MouseAdapter() {
+	        	
+	        	public void MouseClicked(MouseEvent e) throws InterruptedException{
+	        	fenetre.getContentPane().removeAll();
+	        	manitou.lancerJeu();
+	        	};
+	        });
+	        pane.add(buttonJouer, BorderLayout.LINE_END);
+	    }
+	    
+		this.addComponentsToPane(panneau);
+	    this.fenetre.pack();
+	    this.fenetre.setVisible(true);
 	}
 

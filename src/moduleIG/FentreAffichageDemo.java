@@ -1,5 +1,5 @@
 package moduleIG;
-package pact.ui.layout;
+
 
 	import java.awt.Component;
 	import java.awt.Container;
