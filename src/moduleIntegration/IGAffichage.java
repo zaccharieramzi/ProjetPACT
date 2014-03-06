@@ -1,5 +1,5 @@
 package moduleIntegration;
 
-public class IGAffichage {
+public class IGAffichage implements IGAffichageInterface {
 
 }
