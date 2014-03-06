@@ -1,10 +1,15 @@
+package moduleClassif;
 
 public class ClassifieurFaible {
 	
-	static int p, d ; //représente le nombre de features et le nombre de composantes
+	static int p, d ; //represente le nombre de features et le nombre de composantes
 	private static boolean [] newlabels = new boolean[d];
-	private Vector[] matrixOfFeatures = new Vector[p] ; //représente la matrice des features les colonnes sont les features. Je veux faire une concaténation des colonnes
-	private double[] weight ; //représente les poids en entrée
+	
+	//represente la matrice des features les colonnes sont les features. 
+	//Je veux faire une concat�nation des colonnes
+	private Vector[] matrixOfFeatures = new Vector[p] ; 
+	
+	private double[] weight ; //represente les poids en entree
 	
 	public ClassifieurFaible(double[] weight, Vector[] matrixOfFeatures){
 		this.matrixOfFeatures = matrixOfFeatures;

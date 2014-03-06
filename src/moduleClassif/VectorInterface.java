@@ -1,3 +1,4 @@
+package moduleClassif;
 
 public interface VectorInterface{
 	
