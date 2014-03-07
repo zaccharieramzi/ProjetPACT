@@ -33,6 +33,7 @@ public class FenetreAffichage {
 		this.manitou= new Manitou();
 		this.ecran = new Affichage();
 		 panneau = (JPanel) fenetre.getContentPane();
+		
 	}
 
 
@@ -85,20 +86,21 @@ public class FenetreAffichage {
 				manitou.setSpeed(4);
 			};
 		});
-		pane.add(buttonExpert, BorderLayout.PAGE_END);
+		pane.add(buttonExpert, BorderLayout.LINE_END);
 
 		JButton buttonValider = new JButton("To step 2");
 		buttonValider.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e) {
 				panneau.removeAll();
+				fenetre.setTitle("Mode de jeu");
 				addComponentsToPane2(panneau);
 				fenetre.repaint();
 				fenetre.pack();
 //				panneau.repaint();
 			};
 		});
-		pane.add(buttonValider, BorderLayout.LINE_END);
+		pane.add(buttonValider, BorderLayout.PAGE_END);
 	}
 
 
@@ -124,7 +126,7 @@ public class FenetreAffichage {
 				manitou.setMode(1);
 			}
 		});
-		pane.add(buttonFacile, BorderLayout.PAGE_START);
+		pane.add(buttonFacile, BorderLayout.LINE_END);
 
 		//Make the center component big, since that's the
 		//typical usage of BorderLayout.
@@ -160,17 +162,16 @@ public class FenetreAffichage {
 		buttonJouer.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
-				fenetre.getContentPane().removeAll();
-				try {
-					manitou.lancerJeu();
-				} catch (InterruptedException e1)
-				{
-					e1.printStackTrace();
-					JOptionPane.showMessageDialog(fenetre, e1.getMessage());
-				}
+				panneau.removeAll();
+				fenetre.setTitle("Decor");
+				addComponentsToPane3(panneau);
+				fenetre.repaint();
+				fenetre.pack();
+//				panneau.repaint();
+				
 			}
 		});
-		pane.add(buttonJouer, BorderLayout.LINE_END);
+		pane.add(buttonJouer, BorderLayout.PAGE_END);
 
 
 
@@ -189,7 +190,7 @@ public class FenetreAffichage {
 					java.awt.ComponentOrientation.RIGHT_TO_LEFT);
 		}
 
-		JButton buttonFirst = new JButton("Choix 1");
+		JButton buttonFirst = new JButton("Decor 1");
 		buttonFirst.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
@@ -198,7 +199,7 @@ public class FenetreAffichage {
 				//manitou.setDeco(1);
 
 				ecran.setDeco(1);
-				System.out.print("d�co 1");
+				
 
 			}
 		});
@@ -206,49 +207,53 @@ public class FenetreAffichage {
 
 		//Make the center component big, since that's the
 		//typical usage of BorderLayout.
-		JButton buttonSecond = new JButton("Choix 2");
+		JButton buttonSecond = new JButton("Decor 2");
 		buttonSecond.setPreferredSize(new Dimension(200, 100));
 		buttonSecond.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setDeco(2);
 				ecran.setDeco(2);
-				System.out.print("d�co 2");
+				
 			}
 		});
 		pane.add(buttonSecond, BorderLayout.CENTER);
 
-		JButton buttonThird = new JButton("Choix 3");
+		JButton buttonThird = new JButton("Decor 3");
 		buttonThird.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setDeco(3);
 				ecran.setDeco(3);
-				System.out.print("d�co 3");
+				
 			}
 		});
 		pane.add(buttonThird, BorderLayout.LINE_START);
 
-		JButton buttonFourth = new JButton("Choix 4");
+		JButton buttonFourth = new JButton("Decor 4");
 		buttonFourth.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setDeco(4);
 				ecran.setDeco(4);
-				System.out.print("d�co 4");
+			
 			}
 		});
-		pane.add(buttonFourth, BorderLayout.PAGE_END);
+		pane.add(buttonFourth, BorderLayout.LINE_END);
 
 		JButton buttonJouer = new JButton("To step 4");
 		buttonJouer.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
-				fenetre.getContentPane().removeAll();
-				addComponentsToPane2(fenetre.getContentPane());
+				panneau.removeAll();
+				fenetre.setTitle("Raquette");
+				addComponentsToPane4(panneau);
+				fenetre.repaint();
+				fenetre.pack();
+//				panneau.repaint();
 			}
 		});
-		pane.add(buttonJouer, BorderLayout.LINE_END);
+		pane.add(buttonJouer, BorderLayout.PAGE_END);
 
 
 
@@ -267,62 +272,68 @@ public class FenetreAffichage {
 					java.awt.ComponentOrientation.RIGHT_TO_LEFT);
 		}
 
-		JButton buttonFirst = new JButton("Choix 1");
+		JButton buttonFirst = new JButton("Raquette1");
 		buttonFirst.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(1);
 				ecran.setRaquette(1);
-				System.out.print("raquette 1");
+		
 			}
 		});
 		pane.add(buttonFirst, BorderLayout.PAGE_START);
 
 		//Make the center component big, since that's the
 		//typical usage of BorderLayout.
-		JButton buttonSecond = new JButton("Choix 2");
+		JButton buttonSecond = new JButton("Raquette2");
 		buttonSecond.setPreferredSize(new Dimension(200, 100));
 		buttonSecond.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(2);
 				ecran.setRaquette(2);
-				System.out.print("raquette 2");
+				
 			}
 		});
 		pane.add(buttonSecond, BorderLayout.CENTER);
 
-		JButton buttonThird = new JButton("Choix 3");
+		JButton buttonThird = new JButton("Raquette3");
 		buttonThird.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(3);
-				//ecran.setRaquette(3);
-				System.out.print("raquette 3");
+				ecran.setRaquette(3);
+				
 			}
 		});
 		pane.add(buttonThird, BorderLayout.LINE_START);
 
-		JButton buttonFourth = new JButton("Choix 4");
+		JButton buttonFourth = new JButton("Raquette4");
 		buttonFourth.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(4);
 				ecran.setRaquette(4);
-				System.out.print("raquette 4");
+				
 			}
 		});
-		pane.add(buttonFourth, BorderLayout.PAGE_END);
+		pane.add(buttonFourth, BorderLayout.LINE_END);
 
 		JButton buttonJouer = new JButton(" Jouer ");
 		buttonJouer.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e) {
-				fenetre.getContentPane().removeAll();
-				addComponentsToPane2(fenetre.getContentPane());
+				panneau.removeAll();
+				try {
+					manitou.lancerJeu();
+				} catch (InterruptedException e1)
+				{
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(fenetre, e1.getMessage());
+				}
 			}
 		});
-		pane.add(buttonJouer, BorderLayout.LINE_END);
+		pane.add(buttonJouer, BorderLayout.PAGE_END);
 
 
 	}

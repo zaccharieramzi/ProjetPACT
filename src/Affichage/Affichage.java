@@ -3,12 +3,12 @@ package Affichage;
 import moduleIntegration.SetRaquetteDecoGuiAffichage;
 
 
-// cette classe contient des methodes qui vont être appelees par GUI pour lui donner le décor et la raquette choisis 
+// cette classe contient des methodes qui vont ï¿½tre appelees par GUI pour lui donner le dï¿½cor et la raquette choisis 
 
 
 public class Affichage implements SetRaquetteDecoGuiAffichage {
 	
-	//créer un constructeur permettant de créer un écran d'affichage (il est utilisé par ex dans la classe fenetre
+	//crï¿½er un constructeur permettant de crï¿½er un ï¿½cran d'affichage (il est utilisï¿½ par ex dans la classe fenetre
 	//pour appeler ses methodes setDeco et setRaquette
 	
 	public Affichage(){
@@ -17,12 +17,12 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 
 	public void setRaquette(int choixRaquette) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("raquette=" +choixRaquette);
 	}
 
 	public void setDeco(int choixDeco) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("deco="+choixDeco);
 	}
 
 }
