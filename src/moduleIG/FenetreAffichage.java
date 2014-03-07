@@ -17,20 +17,22 @@ import java.awt.event.MouseEvent;
 
 public class FenetreAffichage {
 
-	private static JFrame fenetre;
-	private static Manitou manitou;
-	public static boolean RIGHT_TO_LEFT = false;
-	JPanel panneau = (JPanel) this.fenetre.getContentPane();
+	private  JFrame fenetre;
+	private  Manitou manitou;
+	public  boolean RIGHT_TO_LEFT = false;
+	private  JPanel panneau;
+	public void show(){
 	this.addComponentsToPane(panneau);
 	this.fenetre.pack();
 	this.fenetre.setVisible(true);
-
+	}
 	private Affichage ecran;
 
 	public FenetreAffichage(){	
 		this.fenetre= new JFrame("Menu principal");
 		this.manitou= new Manitou();
-		//this.ecran = new Affichage();
+		this.ecran = new Affichage();
+		 panneau = (JPanel) fenetre.getContentPane();
 	}
 
 
@@ -49,7 +51,7 @@ public class FenetreAffichage {
 		JButton buttonFacile = new JButton("Facile");
 		buttonFacile.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				manitou.setSpeed(1);
 			};
 		});
@@ -61,7 +63,7 @@ public class FenetreAffichage {
 		buttonNormal.setPreferredSize(new Dimension(200, 100));
 		buttonNormal.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				manitou.setSpeed(2);
 			};
 		});
@@ -70,7 +72,7 @@ public class FenetreAffichage {
 		JButton buttonDifficile = new JButton("Difficile");
 		buttonDifficile.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				manitou.setSpeed(3);
 			};
 		});
@@ -79,7 +81,7 @@ public class FenetreAffichage {
 		JButton buttonExpert = new JButton("Expert");
 		buttonExpert.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				manitou.setSpeed(4);
 			};
 		});
@@ -88,9 +90,12 @@ public class FenetreAffichage {
 		JButton buttonValider = new JButton("To step 2");
 		buttonValider.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e) throws InterruptedException{
-				fenetre.getContentPane().removeAll();
-				addComponentsToPane2(fenetre.getContentPane());
+			public void mouseClicked(MouseEvent e) {
+				panneau.removeAll();
+				addComponentsToPane2(panneau);
+				fenetre.repaint();
+				fenetre.pack();
+//				panneau.repaint();
 			};
 		});
 		pane.add(buttonValider, BorderLayout.LINE_END);
@@ -115,8 +120,8 @@ public class FenetreAffichage {
 			// a voir ce qu'on rajoute pour differencier entre les differents modes de jeu.
 			//Un setter pourrait servir
 
-			public void MouseClicked(MouseEvent e){
-				//manitou.setMode(1);
+			public void mouseClicked(MouseEvent e){
+				manitou.setMode(1);
 			}
 		});
 		pane.add(buttonFacile, BorderLayout.PAGE_START);
@@ -131,7 +136,7 @@ public class FenetreAffichage {
 			// a voir ce qu'on rajoute pour differencier entre les differents modes de jeu.
 			//Un setter pourrait servir       
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 
 			}
 		});
@@ -143,7 +148,7 @@ public class FenetreAffichage {
 			// a voir ce qu'on rajoute pour differencier entre les differents modes de jeu.
 			//Un setter pourrait servir
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 
 			}
 		});
@@ -154,9 +159,15 @@ public class FenetreAffichage {
 		JButton buttonJouer = new JButton("To step 3");
 		buttonJouer.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e) throws InterruptedException{
+			public void mouseClicked(MouseEvent e){
 				fenetre.getContentPane().removeAll();
-				manitou.lancerJeu();
+				try {
+					manitou.lancerJeu();
+				} catch (InterruptedException e1)
+				{
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(fenetre, e1.getMessage());
+				}
 			}
 		});
 		pane.add(buttonJouer, BorderLayout.LINE_END);
@@ -181,12 +192,12 @@ public class FenetreAffichage {
 		JButton buttonFirst = new JButton("Choix 1");
 		buttonFirst.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 
 				//ce n'est pas au controleur qu'il faut donner la d�co mais � affichage
 				//manitou.setDeco(1);
 
-				//ecran.setDeco(1);
+				ecran.setDeco(1);
 				System.out.print("d�co 1");
 
 			}
@@ -199,9 +210,9 @@ public class FenetreAffichage {
 		buttonSecond.setPreferredSize(new Dimension(200, 100));
 		buttonSecond.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				//manitou.setDeco(2);
-				//ecran.setDeco(2);
+				ecran.setDeco(2);
 				System.out.print("d�co 2");
 			}
 		});
@@ -210,9 +221,9 @@ public class FenetreAffichage {
 		JButton buttonThird = new JButton("Choix 3");
 		buttonThird.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				//manitou.setDeco(3);
-				//ecran.setDeco(3);
+				ecran.setDeco(3);
 				System.out.print("d�co 3");
 			}
 		});
@@ -221,9 +232,9 @@ public class FenetreAffichage {
 		JButton buttonFourth = new JButton("Choix 4");
 		buttonFourth.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				//manitou.setDeco(4);
-				//ecran.setDeco(4);
+				ecran.setDeco(4);
 				System.out.print("d�co 4");
 			}
 		});
@@ -232,7 +243,7 @@ public class FenetreAffichage {
 		JButton buttonJouer = new JButton("To step 4");
 		buttonJouer.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e) throws InterruptedException{
+			public void mouseClicked(MouseEvent e){
 				fenetre.getContentPane().removeAll();
 				addComponentsToPane2(fenetre.getContentPane());
 			}
@@ -259,9 +270,9 @@ public class FenetreAffichage {
 		JButton buttonFirst = new JButton("Choix 1");
 		buttonFirst.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(1);
-				//ecran.setRaquette(1);
+				ecran.setRaquette(1);
 				System.out.print("raquette 1");
 			}
 		});
@@ -273,9 +284,9 @@ public class FenetreAffichage {
 		buttonSecond.setPreferredSize(new Dimension(200, 100));
 		buttonSecond.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(2);
-				//ecran.setRaquette(2);
+				ecran.setRaquette(2);
 				System.out.print("raquette 2");
 			}
 		});
@@ -284,7 +295,7 @@ public class FenetreAffichage {
 		JButton buttonThird = new JButton("Choix 3");
 		buttonThird.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(3);
 				//ecran.setRaquette(3);
 				System.out.print("raquette 3");
@@ -295,9 +306,9 @@ public class FenetreAffichage {
 		JButton buttonFourth = new JButton("Choix 4");
 		buttonFourth.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(4);
-				//ecran.setRaquette(4);
+				ecran.setRaquette(4);
 				System.out.print("raquette 4");
 			}
 		});
@@ -306,7 +317,7 @@ public class FenetreAffichage {
 		JButton buttonJouer = new JButton(" Jouer ");
 		buttonJouer.addMouseListener(new MouseAdapter() {
 
-			public void MouseClicked(MouseEvent e) throws InterruptedException{
+			public void mouseClicked(MouseEvent e) {
 				fenetre.getContentPane().removeAll();
 				addComponentsToPane2(fenetre.getContentPane());
 			}
