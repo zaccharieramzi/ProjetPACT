@@ -11,7 +11,7 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		Manitou controlleur=new Manitou();
-		controlleur.refresh();
+		//controlleur.refresh();
 		
 	}
 
