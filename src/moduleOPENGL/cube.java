@@ -1,3 +1,4 @@
+package moduleOPENGL;
 
 import static org.lwjgl.opengl.GL11.GL_AMBIENT_AND_DIFFUSE;
 import static org.lwjgl.opengl.GL11.GL_COLOR_MATERIAL;

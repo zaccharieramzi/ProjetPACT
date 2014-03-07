@@ -1,3 +1,4 @@
+package moduleOPENGL;
 
 import java.nio.FloatBuffer;
 import org.lwjgl.BufferUtils;

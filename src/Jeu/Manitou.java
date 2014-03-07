@@ -2,7 +2,7 @@ package Jeu;
 import moduleIntegration.*;
 
 
-public class Manitou implements SetDirectionInterfaceClassifCon, getPositionOfRaquetteBalleAffichageCon,
+public class Manitou implements SetDirectionInterfaceClassifCon, GetPositionOfRaquetteBalleAffichageCon,
 								IGControleurInterface{
 
 	public Manitou() {
