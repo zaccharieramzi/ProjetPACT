@@ -2,9 +2,9 @@ package moduleIntegration;
 
 public interface DescripteurClassificationInterface {
 	
-	public int[][] getMatriceDescripteur();
-	//recupere la matrice de descripteur (confirmer la taille et le type du tableau)
+	public void giveMatrix(int [] matrix);
+	//descripteur envoie la matrice de valeur (confirmer la taille et le type du tableau)
 	
-	//ClassifieurFaible()
+
 	
 }

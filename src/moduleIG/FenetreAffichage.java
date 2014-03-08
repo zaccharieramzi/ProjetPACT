@@ -1,4 +1,6 @@
 package moduleIG;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -8,6 +10,8 @@ import Jeu.Manitou;
 import java.awt.Container;
 
 import javax.swing.*;
+
+import moduleIntegration.ReproduireExec;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -26,8 +30,14 @@ public class FenetreAffichage {
 	this.fenetre.pack();
 	this.fenetre.setLocationRelativeTo(null);
 	this.fenetre.setVisible(true);
+	
+	// les deux lignes suivantes font parties de l'intégration du système permettant la reproduction d'une execution
+	
 	}
 	private Affichage ecran;
+	private String chemin = "data\\ReproductionEXEC";
+	private String message = "NOUVEAU JEU: \n";
+	
 
 	public FenetreAffichage(){	
 		this.fenetre= new JFrame("Menu principal");
@@ -36,6 +46,17 @@ public class FenetreAffichage {
 		 panneau = (JPanel) fenetre.getContentPane();
 		
 	}
+	
+	protected void setIcon(JButton button, String iconPath)
+	  {
+	    ImageIcon icon = new ImageIcon(iconPath) ;
+
+	    // Dimensionne le bouton selon la taille de l'icône.
+	    button.setPreferredSize(new Dimension(icon.getIconWidth(), icon
+	          .getIconHeight())) ;
+	    // Habille le bouton de l'icône.
+	    button.setIcon(icon) ;
+	  }
 
 
 	public void addComponentsToPane(Container pane) {
@@ -50,46 +71,71 @@ public class FenetreAffichage {
 					java.awt.ComponentOrientation.RIGHT_TO_LEFT);
 		}
 
-		JButton buttonFacile = new JButton("Facile");
+		JButton buttonFacile = new JButton();
+		String facilePath = "src/ImagesGUI/facile.jpg";
+		setIcon(buttonFacile, facilePath);
 		buttonFacile.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				manitou.setSpeed(1);
-			};
+				message=message+"Speed envoyée : 1(FACILE)\n";
+				//ReproduireExec.ecrire(chemin, message);
+			}
+			
 		});
 		pane.add(buttonFacile, BorderLayout.PAGE_START);
 
 		//Make the center component big, since that's the
 		//typical usage of BorderLayout.
-		JButton buttonNormal = new JButton("Normal");
-		buttonNormal.setPreferredSize(new Dimension(200, 100));
+		
+		
+		JButton buttonNormal = new JButton();
+//		buttonNormal.setPreferredSize(new Dimension(200, 100));	
+		String NormalPath = "src/ImagesGUI/normal.jpg";
+		setIcon(buttonNormal, NormalPath);
 		buttonNormal.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				manitou.setSpeed(2);
+				message=message+"Speed envoyée : 2(NORMAL)\n";
+				//ReproduireExec.ecrire(chemin, message);
 			};
 		});
 		pane.add(buttonNormal, BorderLayout.CENTER);
 
-		JButton buttonDifficile = new JButton("Difficile");
+		JButton buttonDifficile = new JButton();
+		String difficilePath = "src/ImagesGUI/difficile.jpg";
+		setIcon(buttonDifficile, difficilePath);
+		
 		buttonDifficile.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				manitou.setSpeed(3);
+				message=message+"Speed envoyée : 1(DIFFICILE)\n";
+				//ReproduireExec.ecrire(chemin, message);
 			};
 		});
 		pane.add(buttonDifficile, BorderLayout.LINE_START);
 
 		JButton buttonExpert = new JButton("Expert");
+		String expertPath = "src/ImagesGUI/expert.jpg";
+		setIcon(buttonExpert, expertPath);
+		
 		buttonExpert.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				manitou.setSpeed(4);
+				message=message+"Speed envoyée : 4(EXPERT)\n";
+				//ReproduireExec.ecrire(chemin, message);
 			};
 		});
 		pane.add(buttonExpert, BorderLayout.LINE_END);
-
-		JButton buttonValider = new JButton("To step 2");
+		
+		//go to STEP 2	
+		JButton buttonValider = new JButton();
+		String step2Path = "src/ImagesGUI/step2.jpg";
+		setIcon(buttonValider, step2Path);
+		
 		buttonValider.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e) {
@@ -104,7 +150,6 @@ public class FenetreAffichage {
 		pane.add(buttonValider, BorderLayout.PAGE_END);
 	}
 
-
 	public void addComponentsToPane2(Container pane) {
 
 		if (!(pane.getLayout() instanceof BorderLayout)) {
@@ -118,6 +163,8 @@ public class FenetreAffichage {
 		}
 
 		JButton buttonFacile = new JButton("J1vsJ2");
+		
+		
 		buttonFacile.addMouseListener(new MouseAdapter() {
 
 			// a voir ce qu'on rajoute pour differencier entre les differents modes de jeu.
@@ -125,6 +172,8 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				manitou.setMode(1);
+				message=message+"Mode envoyé : 1(J1vsJ2)\n";
+				//ReproduireExec.ecrire(chemin, message);
 			}
 		});
 		pane.add(buttonFacile, BorderLayout.LINE_END);
@@ -140,7 +189,8 @@ public class FenetreAffichage {
 			//Un setter pourrait servir       
 
 			public void mouseClicked(MouseEvent e){
-
+				message=message+"Mode envoyé : 2(J1vsIA)\n";
+				//ReproduireExec.ecrire(chemin, message);
 			}
 		});
 		pane.add(buttonNormal, BorderLayout.CENTER);
@@ -152,14 +202,18 @@ public class FenetreAffichage {
 			//Un setter pourrait servir
 
 			public void mouseClicked(MouseEvent e){
-
+				message=message+"Mode envoyé : 3(J1&J2vsIA)\n";
+				//ReproduireExec.ecrire(chemin, message);
 			}
 		});
 		pane.add(buttonDifficile, BorderLayout.LINE_START);
 
 
-
-		JButton buttonJouer = new JButton("To step 3");
+		//go to STEP3
+		JButton buttonJouer = new JButton();
+		String step3Path = "src/ImagesGUI/step3.jpg";
+		setIcon(buttonJouer, step3Path);
+		
 		buttonJouer.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
@@ -190,8 +244,11 @@ public class FenetreAffichage {
 			pane.setComponentOrientation(
 					java.awt.ComponentOrientation.RIGHT_TO_LEFT);
 		}
-
-		JButton buttonFirst = new JButton("Decor 1");
+			//DECOR1
+		JButton buttonFirst = new JButton();
+		String iconPath1 = "src/ImagesGUI/pelouse.jpg";
+		setIcon(buttonFirst, iconPath1);
+		
 		buttonFirst.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
@@ -200,6 +257,9 @@ public class FenetreAffichage {
 				//manitou.setDeco(1);
 
 				ecran.setDeco(1);
+				message=message+"Deco envoyée: 1 \n";
+				//ReproduireExec.ecrire(chemin, message);
+				
 				
 
 			}
@@ -208,41 +268,68 @@ public class FenetreAffichage {
 
 		//Make the center component big, since that's the
 		//typical usage of BorderLayout.
-		JButton buttonSecond = new JButton("Decor 2");
-		buttonSecond.setPreferredSize(new Dimension(200, 100));
+		
+		//DECOR2
+		JButton buttonSecond = new JButton();
+//		buttonSecond.setPreferredSize(new Dimension(200, 100));
+		
+		String iconPath2 = "src/ImagesGUI/ocean.jpg";
+		setIcon(buttonSecond, iconPath2);
+		
 		buttonSecond.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setDeco(2);
 				ecran.setDeco(2);
+				message=message+"Deco envoyée: 2 \n";
+				//ReproduireExec.ecrire(chemin, message);
 				
 			}
 		});
 		pane.add(buttonSecond, BorderLayout.CENTER);
 
-		JButton buttonThird = new JButton("Decor 3");
+		
+		//DECOR3
+		JButton buttonThird = new JButton();
+		String iconPath3 = "src/ImagesGUI/jungle.jpg";
+		setIcon(buttonThird, iconPath3);
+		
 		buttonThird.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setDeco(3);
 				ecran.setDeco(3);
+				message=message+"Deco envoyée: 3 \n";
+				//ReproduireExec.ecrire(chemin, message);
 				
 			}
 		});
 		pane.add(buttonThird, BorderLayout.LINE_START);
 
-		JButton buttonFourth = new JButton("Decor 4");
+		
+		//DECOR4
+		JButton buttonFourth = new JButton();
+		String iconPath4 = "src/ImagesGUI/newYork.jpg";
+		setIcon(buttonFourth, iconPath4);
+		
 		buttonFourth.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setDeco(4);
 				ecran.setDeco(4);
+				message=message+"Deco envoyée: 4 \n";
+				//ReproduireExec.ecrire(chemin, message);
 			
 			}
 		});
 		pane.add(buttonFourth, BorderLayout.LINE_END);
-
-		JButton buttonJouer = new JButton("To step 4");
+		
+		//go to step4
+		//il faut renommer ce bouton
+		JButton buttonJouer = new JButton();
+		String step4Path = "src/ImagesGUI/step4.jpg";
+		setIcon(buttonJouer, step4Path);
+		
 		buttonJouer.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
@@ -272,13 +359,19 @@ public class FenetreAffichage {
 			pane.setComponentOrientation(
 					java.awt.ComponentOrientation.RIGHT_TO_LEFT);
 		}
-
-		JButton buttonFirst = new JButton("Raquette1");
+		
+		//raquette 1
+		JButton buttonFirst = new JButton();
+		String iconPath1 = "src/ImagesGUI/raquetteSport.jpg";
+		setIcon(buttonFirst, iconPath1);
+		
 		buttonFirst.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(1);
 				ecran.setRaquette(1);
+				message=message+"Raquette envoyée: 1 \n";
+				//ReproduireExec.ecrire(chemin, message);
 		
 			}
 		});
@@ -286,41 +379,62 @@ public class FenetreAffichage {
 
 		//Make the center component big, since that's the
 		//typical usage of BorderLayout.
-		JButton buttonSecond = new JButton("Raquette2");
-		buttonSecond.setPreferredSize(new Dimension(200, 100));
+		
+		//raquette 2
+		JButton buttonSecond = new JButton();
+		String iconPath2 = "src/ImagesGUI/requin.jpg";
+		setIcon(buttonSecond, iconPath2);
+		
+//		buttonSecond.setPreferredSize(new Dimension(200, 100));
 		buttonSecond.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(2);
 				ecran.setRaquette(2);
+				message=message+"Raquette envoyée: 2 \n";
+				ReproduireExec.ecrire(chemin, message);
 				
 			}
 		});
 		pane.add(buttonSecond, BorderLayout.CENTER);
-
-		JButton buttonThird = new JButton("Raquette3");
+		
+		//raquette 3
+		JButton buttonThird = new JButton();
+		String iconPath3 = "src/ImagesGUI/banane.jpg";
+		setIcon(buttonThird, iconPath3);
+		
 		buttonThird.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(3);
 				ecran.setRaquette(3);
+				message=message+"Raquette envoyée: 3 \n";
+//				ReproduireExec.ecrire(chemin, message);
 				
 			}
 		});
 		pane.add(buttonThird, BorderLayout.LINE_START);
-
-		JButton buttonFourth = new JButton("Raquette4");
+		//RAQUETTE 4
+		JButton buttonFourth = new JButton();
+		String iconPath4 = "src/ImagesGUI/stars.jpg";
+		setIcon(buttonFourth, iconPath4);
+		
 		buttonFourth.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(4);
 				ecran.setRaquette(4);
+				message=message+"Raquette envoyée: 4 \n";
+//				ReproduireExec.ecrire(chemin, message);
 				
 			}
 		});
 		pane.add(buttonFourth, BorderLayout.LINE_END);
 
-		JButton buttonJouer = new JButton(" Jouer ");
+		JButton buttonJouer = new JButton();
+		String playPath = "src/ImagesGUI/jouer.jpg";
+		setIcon(buttonJouer, playPath);
+		
 		buttonJouer.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e) {
@@ -338,7 +452,6 @@ public class FenetreAffichage {
 
 
 	}
-
-	
 }
+
 
