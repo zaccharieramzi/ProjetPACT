@@ -88,7 +88,7 @@ public class cube {
     private int vertexShader;
     private int fragmentShader;    
 
-    
+   
     public cube() {
     }
 
@@ -115,6 +115,7 @@ public class cube {
             render();
             
             Display.update();
+       
         }
         
         Display.destroy();
