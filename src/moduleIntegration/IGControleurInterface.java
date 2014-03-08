@@ -9,6 +9,8 @@ public interface IGControleurInterface {
 	
 	//setSpeed represente la difficulte choisie
 	void setSpeed(int vitesse);
+	void mettreEnPause_Reprendre();
+
 	
 	void lancerJeu() throws InterruptedException;
 
