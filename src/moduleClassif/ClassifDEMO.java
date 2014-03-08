@@ -1,13 +1,16 @@
 package moduleClassif;
 
+import Jeu.Manitou;
 import moduleIntegration.*;
 
 public class ClassifDEMO implements DescripteurClassificationInterface {
 	
 	int[] matrice ;
-	static String chemin = "src\\data\\fichierClassif";
-	static String message= "";
-	
+	private String chemin = "data\\LOGS" ;
+	private String message = "";
+	Manitou manitou = new Manitou();
+	private int counter0 = 0;
+	private int counter1 = 0;
 	
 	public ClassifDEMO(){
 		super();
@@ -16,10 +19,27 @@ public class ClassifDEMO implements DescripteurClassificationInterface {
 	@Override
 	public void giveMatrix(int[] matrix) {
 		this.matrice = matrix;
-		message = message+"matrice du descripteur récupérée";
+		message = message+"matrice du descripteur envoyée à Classif";
+		sendPosition();
 	}
 	
-	public static void main(String[] args){
-		Test.ecrire(chemin, message);
+	public void sendPosition(){
+		
+		for(int i =0; i<matrice.length;i++){
+			if(matrice[i]==0) counter0++;
+			else counter1++;
+		}
+		if(counter0>=counter1){
+			manitou.setDirectionP1(0);
+			message=message+"\n DirectionP1 envoyée : 0";
+			System.out.println("direction 0");
+		}
+		else {
+			manitou.setDirectionP1(1);
+			message=message+"\n DirectionP1 envoyée : 1";	
+			System.out.println("direction 1");
+		}
+		ReproduireExec.ecrire(chemin, message);
 	}
+	
 }
