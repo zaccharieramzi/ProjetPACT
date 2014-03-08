@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Test{
+public class ReproduireExec{
 	public static void ecrire(String nomFic, String texte)
 	{
 		//on va chercher le chemin et le nom du fichier et on me tout ca dans un String
@@ -33,7 +33,7 @@ public class Test{
 			
 			output.close();
 			//et on le ferme
-			System.out.println("fichier créé");
+			System.out.println("message écrit");
 		}
 		catch(IOException ioe)
 		{
