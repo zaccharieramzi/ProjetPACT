@@ -19,9 +19,7 @@ public class TexturedVBO
     // Texture Object
     Texture texture;
     
-    /**
-     * Private constructor to store values
-     */
+   
     private TexturedVBO(Texture tex, int vertID, int texID)
     {
         vboTextureID = texID;
@@ -68,9 +66,7 @@ public class TexturedVBO
         return new TexturedVBO(tex, vboVertexID, vboTextureID);
     }
     
-    /**
-     * Renders this TexturedVBO at position (x, y) on the screen
-     */
+   
     public void render(float x, float y)
     {
         glPushMatrix();
