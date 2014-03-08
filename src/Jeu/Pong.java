@@ -21,7 +21,7 @@ public class Pong extends Game
 
     public void init()
     {
-        Display.setTitle("Tutorial 8: LWJGL Pong");
+        Display.setTitle("PACT:Pong");
 
         // Initialize OpenGL
         glMatrixMode(GL_PROJECTION);
