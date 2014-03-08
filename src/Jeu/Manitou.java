@@ -3,7 +3,7 @@ import moduleIntegration.*;
 
 
 public class Manitou implements SetDirectionInterfaceClassifCon, GetPositionOfRaquetteBalleAffichageCon,
-								IGControleurInterface{
+IGControleurInterface{
 
 	public Manitou() {
 		super();
@@ -20,25 +20,31 @@ public class Manitou implements SetDirectionInterfaceClassifCon, GetPositionOfRa
 	private Score score=new Score(0,0);
 	private MouvementBalle laBalle;
 	private MouvementRaquettes lesRaquettes;
-	
-	
-	
+	private boolean pause;
+
+
+
+	public void mettreEnPause_Reprendre(){
+		this.pause= !pause;
+		System.out.println("Je mets le jeu en pause");
+	}
 	@Override
 	public void lancerJeu() throws InterruptedException {
 		// TODO Auto-generated method stub
-		
+
 		while (score.limiteAtteinte(10)){
 			laBalle= new MouvementBalle(balle, decor, raquetteP1, raquetteP2, score );
 			lesRaquettes = new MouvementRaquettes(raquetteP1, raquetteP2, decor, directionP1, directionP2);
-			new Thread(laBalle).start();
-			new Thread(lesRaquettes).start();
-			
-			
-			
+			while(decor.getBalleStaysInTheField()&&!pause){
+				laBalle.run();
+				lesRaquettes.run();
+			}
+
+
 		}
-		
+
 	}
-	
+
 	@Override
 	public void setDirectionP1(int direction) {
 		// TODO Auto-generated method stub
@@ -76,7 +82,7 @@ public class Manitou implements SetDirectionInterfaceClassifCon, GetPositionOfRa
 	@Override
 	public void setMode(int mode) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	// Il faut rajouter des setters et getters concernant les 4 differents décors et les 4 différents types de raquette

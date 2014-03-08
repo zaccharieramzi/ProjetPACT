@@ -14,6 +14,7 @@ public class Raquette extends Tools implements RaquetteInterface {
 	public void Rebond(BalleInterface b) {
 		// TODO Auto-generated method stub
 		//a modifier
+//		System.out.println("Il y a des rebonds");
 		b.setAnglePhi(b.getAnglePhi());
 		b.setAngleTheta(b.getAngleTheta());
 	}
