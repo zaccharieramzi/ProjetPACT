@@ -24,6 +24,7 @@ public class FenetreAffichage {
 	public void show(){
 	this.addComponentsToPane(panneau);
 	this.fenetre.pack();
+	this.fenetre.setLocationRelativeTo(null);
 	this.fenetre.setVisible(true);
 	}
 	private Affichage ecran;
