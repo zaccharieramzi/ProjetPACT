@@ -74,7 +74,7 @@ public class cube {
 	private FloatBuffer lightPosition;
 	private FloatBuffer whiteLight; 
 	private FloatBuffer lModelAmbient;
-   
+  
 
     //Ã  partir des exercices 3.1
     private int vertex_vbo_id = 0;

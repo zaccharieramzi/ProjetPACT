@@ -1,6 +1,5 @@
 package moduleOPENGL;
 
-	
 
 import java.awt.PageAttributes.ColorType;
 

@@ -1,4 +1,6 @@
-package jeu;
+package Jeu;
+
+
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
@@ -11,6 +13,9 @@ public class Game
     // Single instance is allowed
     private static Game instance;
     
+    /**
+     * A basic game.
+     */
     public Game()
     {
         try
@@ -75,24 +80,42 @@ public class Game
         setDisplayMode(Display.getDisplayMode(), fullscreen);
     }
     
-   
+    /**
+     * Sets a DisplayMode.
+     * @param mode The DisplayMode.
+     * @param fullscreen The fullscreen state.
+     */
     public static boolean setDisplayMode(DisplayMode mode, boolean fullscreen)
     {
         return setDisplayMode(mode.getWidth(), mode.getHeight(), fullscreen);
     }
     
-  
+    /**
+     * Sets a DisplayMode.
+     */
     public static boolean setDisplayMode(DisplayMode mode)
     {
         return setDisplayMode(mode, false);
     }
     
-  
+    /**
+     * Sets a windowed DisplayMode.
+     * @param width The width of the display.
+     * @param height The height of the display.
+     */
     public static boolean setDisplayMode(int width, int height)
     {
         return setDisplayMode(width, height, false);
     }
-   
+    
+    /**
+     * Sets a DisplayMode after selecting for a better one.
+     * @param width The width of the display.
+     * @param height The height of the display.
+     * @param fullscreen The fullscreen mode.
+     * 
+     * @return True if switching is successful. Else false.
+     */
     public static boolean setDisplayMode(int width, int height, boolean fullscreen)
     {        
         // return if requested DisplayMode is already set
@@ -172,13 +195,17 @@ public class Game
         return false;
     }
     
- 
+    /**
+     * @return Current time in milliseconds.
+     */
     public static long getCurrentTime()
     {
         return Sys.getTime() * 1000 / Sys.getTimerResolution();
     }
     
-  
+    /**
+     * Properly terminate the game.
+     */
     public static void end()
     {
         instance.dispose();
@@ -187,27 +214,38 @@ public class Game
         System.exit(0);
     }
     
-  
+    /**
+     * Load any resources here.
+     */
     public void init()
     {
     }
     
-    
+    /**
+     * Update the logic of the game.
+     * @param elapsedTime Time elapsed since last frame.
+     */
     public void update(long elapsedTime)
     {
     }
     
-   
+    /**
+     * Render to screen.
+     */
     public void render()
     {
     }
     
-  
+    /**
+     * Display is resized
+     */
     public void resized()
     {
     }
     
- 
+    /**
+     * Dispose created resources.
+     */
     public void dispose()
     {
     }

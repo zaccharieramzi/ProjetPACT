@@ -8,6 +8,8 @@ import java.nio.FloatBuffer;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.Display;
 
+import Jeu.Game;
+
 
 public class CubeTurn extends Game
 {

@@ -13,7 +13,6 @@ import java.nio.IntBuffer;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
-
 import org.lwjgl.BufferUtils;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
@@ -22,7 +21,6 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
-
 
 public class TextureCube {
 	long lastFrame;
@@ -62,7 +60,6 @@ public class TextureCube {
 
 		Display.destroy();
 	}
-	
 	
 	public void renderGL() {
 		// Clear The Screen And The Depth Buffer

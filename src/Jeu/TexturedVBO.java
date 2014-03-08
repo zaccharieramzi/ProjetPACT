@@ -1,4 +1,5 @@
-package jeu;
+package Jeu;
+
 
 import java.nio.FloatBuffer;
 

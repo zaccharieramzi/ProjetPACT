@@ -31,7 +31,7 @@ public class LightingSphere {
 		LightingSphere test = new LightingSphere();
 		test.run( );
 	}
-
+  
 	private void run() {
 		try {
 			init();
@@ -57,7 +57,6 @@ public class LightingSphere {
 		Sphere s = new Sphere();
 		s.draw(1.0f, 20, 16);
 	}
-	
 	
 	private void getInput() {
 		if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {	// if user presses escape key

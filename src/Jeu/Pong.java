@@ -1,5 +1,4 @@
-package jeu;
-
+package Jeu;
 
 
 import static org.lwjgl.opengl.GL11.*;
