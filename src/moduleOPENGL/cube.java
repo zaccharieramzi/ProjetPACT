@@ -74,7 +74,7 @@ public class cube {
 	private FloatBuffer lightPosition;
 	private FloatBuffer whiteLight; 
 	private FloatBuffer lModelAmbient;
-   
+  
 
     //Ã  partir des exercices 3.1
     private int vertex_vbo_id = 0;
@@ -88,7 +88,7 @@ public class cube {
     private int vertexShader;
     private int fragmentShader;    
 
-    
+   
     public cube() {
     }
 
@@ -115,6 +115,7 @@ public class cube {
             render();
             
             Display.update();
+       
         }
         
         Display.destroy();
