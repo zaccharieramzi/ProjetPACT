@@ -4,7 +4,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Affichage.Affichage;
 import Jeu.Manitou;
 
 import java.awt.Container;
@@ -13,6 +12,8 @@ import javax.swing.*;
 
 import moduleIntegration.ReproduireExec;
 
+
+import moduleOPENGL.Jouer.Pong;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -32,20 +33,19 @@ public class FenetreAffichage {
 	this.fenetre.setLocationRelativeTo(null);
 	this.fenetre.setVisible(true);
 	
-	// les deux lignes suivantes font parties de l'intï¿½gration du systï¿½me permettant la reproduction d'une execution
+	// les deux lignes suivantes font parties de l'intégration du système permettant la reproduction d'une execution
 	
 	}
-	//private Pong ecran;
-	private Affichage ecran;
-	private String chemin = "data\\ReproductionEXEC";
+
+	private Pong pong;
+	private String chemin = "data\\ReproductionEXEC.txt";
 	private String message = "NOUVEAU JEU: \n";
 	
 
-	public FenetreAffichage(){	
+	public FenetreAffichage(Manitou manitou, Pong pong){	
 		this.fenetre= new JFrame("Menu principal");
-		this.manitou= new Manitou();
-		//this.ecran = new Pong();
-		this.ecran = new Affichage();
+		this.manitou= manitou;
+		this.pong = pong;
 		 panneau = (JPanel) fenetre.getContentPane();
 		
 	}
@@ -54,10 +54,10 @@ public class FenetreAffichage {
 	  {
 	    ImageIcon icon = new ImageIcon(iconPath) ;
 
-	    // Dimensionne le bouton selon la taille de l'icï¿½ne.
+	    // Dimensionne le bouton selon la taille de l'icône.
 	    button.setPreferredSize(new Dimension(icon.getIconWidth(), icon
 	          .getIconHeight())) ;
-	    // Habille le bouton de l'icï¿½ne.
+	    // Habille le bouton de l'icône.
 	    button.setIcon(icon) ;
 	  }
 
@@ -81,7 +81,7 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				manitou.setSpeed(1);
-				message=message+"Speed envoyï¿½e : 1(FACILE)\n";
+				message=message+"Speed envoyée : 1(FACILE)\n";
 				//ReproduireExec.ecrire(chemin, message);
 			}
 			
@@ -100,7 +100,7 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				manitou.setSpeed(2);
-				message=message+"Speed envoyï¿½e : 2(NORMAL)\n";
+				message=message+"Speed envoyée : 2(NORMAL)\n";
 				//ReproduireExec.ecrire(chemin, message);
 			};
 		});
@@ -114,7 +114,7 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				manitou.setSpeed(3);
-				message=message+"Speed envoyï¿½e : 1(DIFFICILE)\n";
+				message=message+"Speed envoyée : 1(DIFFICILE)\n";
 				//ReproduireExec.ecrire(chemin, message);
 			};
 		});
@@ -128,7 +128,7 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				manitou.setSpeed(4);
-				message=message+"Speed envoyï¿½e : 4(EXPERT)\n";
+				message=message+"Speed envoyée : 4(EXPERT)\n";
 				//ReproduireExec.ecrire(chemin, message);
 			};
 		});
@@ -175,7 +175,7 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				manitou.setMode(1);
-				message=message+"Mode envoyï¿½ : 1(J1vsJ2)\n";
+				message=message+"Mode envoyé : 1(J1vsJ2)\n";
 				//ReproduireExec.ecrire(chemin, message);
 			}
 		});
@@ -192,7 +192,7 @@ public class FenetreAffichage {
 			//Un setter pourrait servir       
 
 			public void mouseClicked(MouseEvent e){
-				message=message+"Mode envoyï¿½ : 2(J1vsIA)\n";
+				message=message+"Mode envoyé : 2(J1vsIA)\n";
 				//ReproduireExec.ecrire(chemin, message);
 			}
 		});
@@ -205,7 +205,7 @@ public class FenetreAffichage {
 			//Un setter pourrait servir
 
 			public void mouseClicked(MouseEvent e){
-				message=message+"Mode envoyï¿½ : 3(J1&J2vsIA)\n";
+				message=message+"Mode envoyé : 3(J1&J2vsIA)\n";
 				//ReproduireExec.ecrire(chemin, message);
 			}
 		});
@@ -258,9 +258,9 @@ public class FenetreAffichage {
 
 				//ce n'est pas au controleur qu'il faut donner la dï¿½co mais ï¿½ affichage
 				//manitou.setDeco(1);
-				System.out.println("dÃ©co 1");
-				ecran.setDeco(1);
-				message=message+"Deco envoyï¿½e: 1 \n";
+
+				pong.setDeco(1);
+				message=message+"Deco envoyée: 1 \n";
 				//ReproduireExec.ecrire(chemin, message);
 				
 				
@@ -283,10 +283,9 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setDeco(2);
-				System.out.println("dÃ©co 2");
-				ecran.setDeco(2);
-				message=message+"Deco envoyï¿½e: 2 \n";
-				//ReproduireExec.ecrire(chemin, message);
+				pong.setDeco(2);
+				message=message+"Deco envoyée: 2 \n";
+				ReproduireExec.ecrire(chemin, message);
 				
 			}
 		});
@@ -302,9 +301,8 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setDeco(3);
-				System.out.println("dÃ©co 3");
-				ecran.setDeco(3);
-				message=message+"Deco envoyï¿½e: 3 \n";
+				pong.setDeco(3);
+				message=message+"Deco envoyée: 3 \n";
 				//ReproduireExec.ecrire(chemin, message);
 				
 			}
@@ -321,9 +319,8 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setDeco(4);
-				System.out.println("dÃ©co 4");
-				ecran.setDeco(4);
-				message=message+"Deco envoyï¿½e: 4 \n";
+				pong.setDeco(4);
+				message=message+"Deco envoyée: 4 \n";
 				//ReproduireExec.ecrire(chemin, message);
 			
 			}
@@ -375,10 +372,9 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(1);
-				System.out.println("raquette 1");
-				ecran.setRaquette(1);
-				message=message+"Raquette envoyï¿½e: 1 \n";
-				//ReproduireExec.ecrire(chemin, message);
+				pong.setRaquette(1);
+				message=message+"Raquette envoyée: 1 \n";
+				ReproduireExec.ecrire(chemin, message);
 		
 			}
 		});
@@ -397,9 +393,8 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(2);
-				System.out.println("raquette 2");
-				ecran.setRaquette(2);
-				message=message+"Raquette envoyï¿½e: 2 \n";
+				pong.setRaquette(2);
+				message=message+"Raquette envoyée: 2 \n";
 				ReproduireExec.ecrire(chemin, message);
 				
 			}
@@ -415,10 +410,9 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(3);
-				System.out.println("raquette 3");
-				ecran.setRaquette(3);
-				message=message+"Raquette envoyï¿½e: 3 \n";
-//				ReproduireExec.ecrire(chemin, message);
+				pong.setRaquette(3);
+				message=message+"Raquette envoyée: 3 \n";
+				ReproduireExec.ecrire(chemin, message);
 				
 			}
 		});
@@ -432,10 +426,9 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e){
 				//manitou.setRaquette(4);
-				System.out.println("raquette 4");
-				ecran.setRaquette(4);
-				message=message+"Raquette envoyï¿½e: 4 \n";
-//				ReproduireExec.ecrire(chemin, message);
+				pong.setRaquette(4);
+				message=message+"Raquette envoyée: 4 \n";
+				ReproduireExec.ecrire(chemin, message);
 				
 			}
 		});
@@ -449,15 +442,7 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e) {
 				panneau.removeAll();
-				try {
-					System.out.println("le jeu va ï¿½tre lancï¿½");
-					manitou.lancerJeu();
-					
-				} catch (InterruptedException e1)
-				{
-					e1.printStackTrace();
-					JOptionPane.showMessageDialog(fenetre, e1.getMessage());
-				}
+				pong.gameLoop();
 			}
 		});
 		pane.add(buttonJouer, BorderLayout.PAGE_END);
