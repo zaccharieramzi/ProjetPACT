@@ -12,11 +12,13 @@ public class Game
     // Single instance is allowed
     private static Game instance;
     
+    
     /**
      * A basic game.
      */
     public Game()
     {
+    	
         try
         {
             instance = this;
@@ -24,7 +26,7 @@ public class Game
             setDisplayMode(800, 600);
             Display.setVSyncEnabled(true);
             Display.setResizable(true);
-            gameLoop();
+           // gameLoop();
         }
         catch (LWJGLException e)
         {
@@ -34,7 +36,7 @@ public class Game
     }
     
     // The gameloop. Runs at 60 fps
-    private void gameLoop()
+    public void gameLoop()
     {
         long lastFrame = getCurrentTime();
         long thisFrame = getCurrentTime();
