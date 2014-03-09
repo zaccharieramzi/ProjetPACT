@@ -34,14 +34,14 @@ public class DirectionGiver {
 		});
 		panneau.add(buttonHaut);
 		JButton buttonBas = new JButton("Bas");
-		buttonHaut.addMouseListener(new MouseAdapter(){
+		buttonBas.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				manitou.setDirectionP1(0);
 			}
 		});
 		panneau.add(buttonBas);
 		JButton buttonPause= new JButton("Pause/Reprendre");
-		buttonHaut.addMouseListener(new MouseAdapter(){
+		buttonPause.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				manitou.mettreEnPause_Reprendre();
 			}
