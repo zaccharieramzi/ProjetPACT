@@ -38,6 +38,7 @@ public class Game
     // The gameloop. Runs at 60 fps
     public void gameLoop()
     {
+    	
         long lastFrame = getCurrentTime();
         long thisFrame = getCurrentTime();
         

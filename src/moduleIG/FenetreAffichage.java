@@ -442,7 +442,12 @@ public class FenetreAffichage {
 
 			public void mouseClicked(MouseEvent e) {
 				panneau.removeAll();
+				panneau.repaint();
+				fenetre.repaint();
+				
 				pong.gameLoop();
+				System.out.println("Le jeu se lance");
+				fenetre.setVisible(false);
 			}
 		});
 		pane.add(buttonJouer, BorderLayout.PAGE_END);

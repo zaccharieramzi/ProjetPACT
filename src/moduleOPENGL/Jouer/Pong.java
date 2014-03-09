@@ -40,7 +40,9 @@ public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAf
 
 	public void init()
 	{
+		
 		Display.setTitle("PACT:Pong");
+		
 
 		// Initialize OpenGL
 		glMatrixMode(GL_PROJECTION);
@@ -87,7 +89,7 @@ public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAf
 		paddle2VBO = TexturedVBO.loadTexturedVBO(paddle2Tex);
 
 		// Load background and create resized background VBO
-		Texture backTex = Texture.loadTexture("background.png");
+		Texture backTex = Texture.loadTexture("mer4.jpg");
 		backTex.width = 800;
 		backTex.height = 600;
 		backgroundVBO = TexturedVBO.loadTexturedVBO(backTex);
@@ -200,16 +202,17 @@ public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAf
 		System.out.println(pong.getVariable2());
 		pong.setRaquette(2);
 		pong.setDeco(3);
+		pong.gameLoop();
 	}
 
 	@Override
 	public void setRaquette(int choixRaquette) {
 		// TODO Auto-generated method stub
 		switch(choixRaquette){
-		case 1 : this.variable1="paddle.png"; break;
+		case 1 : this.variable1="paddle3.png"; break;
 		case 2 : this.variable1="paddle3.png"; break;
-		case 3 : this.variable1="paddle.png"; break;
-		case 4 : this.variable1="paddle.png"; break;
+		case 3 : this.variable1="paddle3.png"; break;
+		case 4 : this.variable1="paddle3.png"; break;
 		}
 	}
 
