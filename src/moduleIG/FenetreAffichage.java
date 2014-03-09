@@ -12,6 +12,7 @@ import java.awt.Container;
 import javax.swing.*;
 
 import moduleIntegration.ReproduireExec;
+import moduleOPENGL.Jeu.Pong;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -34,6 +35,7 @@ public class FenetreAffichage {
 	// les deux lignes suivantes font parties de l'intégration du système permettant la reproduction d'une execution
 	
 	}
+	//private Pong ecran;
 	private Affichage ecran;
 	private String chemin = "data\\ReproductionEXEC";
 	private String message = "NOUVEAU JEU: \n";
@@ -42,6 +44,7 @@ public class FenetreAffichage {
 	public FenetreAffichage(){	
 		this.fenetre= new JFrame("Menu principal");
 		this.manitou= new Manitou();
+		//this.ecran = new Pong();
 		this.ecran = new Affichage();
 		 panneau = (JPanel) fenetre.getContentPane();
 		
@@ -440,7 +443,9 @@ public class FenetreAffichage {
 			public void mouseClicked(MouseEvent e) {
 				panneau.removeAll();
 				try {
+					System.out.println("le jeu va être lancé");
 					manitou.lancerJeu();
+					
 				} catch (InterruptedException e1)
 				{
 					e1.printStackTrace();

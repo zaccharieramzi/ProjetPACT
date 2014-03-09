@@ -14,7 +14,7 @@ IGControleurInterface{
 	private int directionP1;
 	private int directionP2;
 	private double alea=Math.random()*Math.PI*2;
-	private Balle balle = new Balle(0,0,0,0,alea,speed,1);
+	private Balle balle = new Balle(1,0,0,0,alea,speed,1);
 	private Raquette raquetteP1=new Raquette(-decor.getX()/2,0,0,speed,5);
 	private Raquette raquetteP2=new Raquette(decor.getX()/2,0,0,speed,5);
 	private Score score=new Score(0,0);
