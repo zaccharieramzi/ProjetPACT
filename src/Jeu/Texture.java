@@ -32,6 +32,7 @@ public class Texture
 
     public static Texture loadTexture(String name)
     {
+    	
         // Load the image
         BufferedImage bimg = null;
         try

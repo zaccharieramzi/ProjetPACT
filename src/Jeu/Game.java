@@ -80,6 +80,7 @@ public class Game
         setDisplayMode(Display.getDisplayMode(), fullscreen);
     }
     
+    
     /**
      * Sets a DisplayMode.
      * @param mode The DisplayMode.

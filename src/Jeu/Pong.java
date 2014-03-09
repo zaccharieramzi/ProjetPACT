@@ -39,6 +39,7 @@ public class Pong extends Game
         paddleTex = Texture.loadTexture("paddle.png");
         paddle2Tex = Texture.loadTexture("paddle2.png");
   
+        
         // Create VBOs
         ballVBO = TexturedVBO.loadTexturedVBO(ballTex);
         paddle1VBO = TexturedVBO.loadTexturedVBO(paddleTex);

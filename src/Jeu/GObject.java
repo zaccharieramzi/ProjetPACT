@@ -1,5 +1,6 @@
 package Jeu;
 
+
 import java.awt.Rectangle;
 
 public class GObject
