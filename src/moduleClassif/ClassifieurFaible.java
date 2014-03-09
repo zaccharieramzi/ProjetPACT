@@ -66,6 +66,7 @@ public class ClassifieurFaible {
 					;
 					labelshape[i] = "left1";
 				}
+<<<<<<< HEAD
 				
 				errorI[i] = vector.error(weight, newlabels, labels);
 				
@@ -73,6 +74,27 @@ public class ClassifieurFaible {
 					index_threshold = i;
 					Ep = errorI[i];
 					labelshapep = labelshape[i];
+=======
+
+				errorI[i] = vector.error(weight, newlabels, labels);
+
+				if (errorI[i+1] < errorI[i]) {
+					index_threshold_feature[j] = i; // renvoie l'indice du seuil
+													// correspondant à l'erreur
+													// minimum et le stocke dans
+													// le taleau
+													// index_threshold_feature
+					error_feature[j] = errorI[i]; // renvoie l'erreur minimum de
+													// la ligne i et le stocke
+													// dans le tableau
+													// Error_feature[p]
+					labelshape_feature[j] = labelshape[i]; // renvoie le
+															// labelshape
+															// associé et le
+															// stocke dans le
+															// tableau
+															// labelfeature[]
+>>>>>>> parent of 5173d0d... rajout d'une virgule
 				}
 					
 				
