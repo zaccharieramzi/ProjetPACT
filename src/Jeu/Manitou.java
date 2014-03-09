@@ -26,7 +26,6 @@ IGControleurInterface{
 
 	public void mettreEnPause_Reprendre(){
 		this.pause= !pause;
-		System.out.println("Je mets le jeu en pause");
 	}
 	@Override
 	public void lancerJeu() throws InterruptedException {
@@ -38,6 +37,7 @@ IGControleurInterface{
 			while(decor.getBalleStaysInTheField()&&!pause){
 				laBalle.run();
 				lesRaquettes.run();
+				System.out.println("Je continue à jouer");
 			}
 
 
