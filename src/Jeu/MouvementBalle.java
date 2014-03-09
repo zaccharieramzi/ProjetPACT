@@ -33,9 +33,9 @@ public class MouvementBalle implements Runnable {
 	};
 	public void run() {
 //System.out.println("C'est bon");
-		balle.setX(x+speed*Math.sin(theta)*Math.cos(phi));
-		balle.setY(y+speed*Math.sin(theta)*Math.sin(phi));
-		balle.setZ(z+speed*Math.cos(theta));
+		balle.setX(x+(1/100)*speed*Math.sin(theta)*Math.cos(phi));
+		balle.setY(y+(1/100)*speed*Math.sin(theta)*Math.sin(phi));
+		balle.setZ(z+(1/100)*speed*Math.cos(theta));
 		if (balle.isAtLimitsX(decor)){
 			decor.Rebond(balle);
 		}
@@ -75,7 +75,7 @@ public class MouvementBalle implements Runnable {
 				}
 			}
 			try {
-				Thread.sleep(500);
+				Thread.sleep(41);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
