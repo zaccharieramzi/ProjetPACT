@@ -1,4 +1,4 @@
-package moduleOPENGL.Jeu;
+package moduleOPENGL.Jouer;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

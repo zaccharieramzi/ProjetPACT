@@ -5,14 +5,10 @@ package moduleOPENGL.Jouer;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.input.Keyboard.*;
 
-
 import org.lwjgl.opengl.Display;
 
-import moduleOPENGL.Jouer.Texture;
-import moduleOPENGL.Jouer.TexturedVBO;
 
-
-public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAffichage 
+public class TestPong extends Game
 {
     // The textures
     Texture ballTex, paddleTex, paddle2Tex;
@@ -23,9 +19,6 @@ public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAf
     // Objects
     GObject paddle1, paddle2, ball;
 
-    String variable1;
-    String variable2;
-	
     public void init()
     {
         Display.setTitle("PACT:Pong");
@@ -41,41 +34,19 @@ public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAf
         glEnable(GL_TEXTURE_2D);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//        @Override
-//    	public void setRaquette(int choixRaquette) {
-//    		// TODO Auto-generated method stub
-//        	if (choixRaquette==1) variable1 = "src/ImagesGUI/raquetteSport";// u gotta  update this I don't know your path
-//    		if (choixRaquette==2) variable1 = "src/ImagesGUI/raquetteSport";
-//    		if (choixRaquette==3) variable1 = "src/ImagesGUI/raquetteSport";
-//    		if (choixRaquette==4) variable1 = "src/ImagesGUI/raquetteSport";
-//    	}
-//
-//    	@Override
-//    	public void setDeco(int choixDeco) {
-//    		// TODO Auto-generated method stub
-//    		if (choixRaquette==1) variable2 = "src/ImagesGUI/raquetteSport"; // u gotta update this too
-//    		if (choixRaquette==2) variable2 = "src/ImagesGUI/raquetteSport";
-//    		if (choixRaquette==3) variable2 = "src/ImagesGUI/raquetteSport";
-//    		if (choixRaquette==4) variable2 = "src/ImagesGUI/raquetteSport";
-//    	}
 
-        
-
-    	
-    	
-    	// Load textures
-        ballTex = Texture.loadTexture("ball.png");
-        paddleTex = Texture.loadTexture("variable1.png");
+        // Load textures
+       ballTex = Texture.loadTexture("ball.png");
+        paddleTex = Texture.loadTexture("paddle.png");
         paddle2Tex = Texture.loadTexture("paddle2.png");
   
-        
         // Create VBOs
         ballVBO = TexturedVBO.loadTexturedVBO(ballTex);
         paddle1VBO = TexturedVBO.loadTexturedVBO(paddleTex);
         paddle2VBO = TexturedVBO.loadTexturedVBO(paddle2Tex);
 
         // Load background and create resized background VBO
-        Texture backTex = Texture.loadTexture("variable2.png");
+        Texture backTex = Texture.loadTexture("background.png");
         backTex.width = 800;
         backTex.height = 600;
         backgroundVBO = TexturedVBO.loadTexturedVBO(backTex);
@@ -176,29 +147,7 @@ public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAf
 
     public static void main(String[] args)
     {
-        new Pong();
+        new TestPong();
     }
-
-	@Override
-	public void setRaquette(int choixRaquette) {
-		// TODO Auto-generated method stub
-		if (choixRaquette==1) variable1 = "paddle.png";// u gotta  update this I don't know your path
-		if (choixRaquette==2) variable1 = "src/ImagesGUI/raquetteSport";
-		if (choixRaquette==3) variable1 = "src/ImagesGUI/raquetteSport";
-		if (choixRaquette==4) variable1 = "src/ImagesGUI/raquetteSport";
-	}
-
-	@Override
-	public void setDeco(int choixDeco) {
-		// TODO Auto-generated method stub
-		if (choixDeco==1) variable2 = "backgroung.png"; // u gotta update this too
-		if (choixDeco==2) variable2 = "src/ImagesGUI/raquetteSport";
-		if (choixDeco==3) variable2 = "src/ImagesGUI/raquetteSport";
-		if (choixDeco==4) variable2 = "src/ImagesGUI/raquetteSport";
-		
-	}
-
-	
-    
 
 }
