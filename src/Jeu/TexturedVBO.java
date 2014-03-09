@@ -8,7 +8,6 @@ import static org.lwjgl.opengl.GL15.*;
 
 import org.lwjgl.BufferUtils;
 
-
 public class TexturedVBO
 {
     // Texture buffer id
