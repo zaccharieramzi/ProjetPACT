@@ -5,7 +5,7 @@ public class ClassifieurFaible {
 
 	private int[] labels;
 	// private static final String String = null;
-	static int l = 3, d = 3; // représente le nombre de lignes et de colonnes
+	static int l = 3, d = 3; // représente le nombre de lignes et de colonnes; ici 3 juste pour tester
 	private static int[] newlabels = new int[l];
 	private double[][] matrixOfFeatures = new double[l][d]; // représente la matrice des features les
 															// colonnes sont les
