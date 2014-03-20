@@ -11,59 +11,47 @@ IGControleurInterface{
 	}
 	private DecorInterface decor=new TableDePingPong(10,6,0);
 	private int speed=1;
-	private int directionP1;
-	private int directionP2;
 	private double alea=Math.random()*Math.PI*2;
 	private Balle balle = new Balle(1,0,0,0,alea,speed,1);
-	private Raquette raquetteP1=new Raquette(-decor.getX()/2,0,0,speed,5);
-	private Raquette raquetteP2=new Raquette(decor.getX()/2,0,0,speed,5);
+	private Raquette raquetteP1=new Raquette(-decor.getX()/2,0,0,decor.getY()/2);
+	private Raquette raquetteP2=new Raquette(decor.getX()/2,0,0,decor.getY()/2);
 	private Score score=new Score(0,0);
 	private MouvementBalle laBalle;
-	private MouvementRaquettes lesRaquettes;
-	private boolean pause;
+	private MouvementRaquettes laRaquette1=new MouvementRaquettes(raquetteP1,decor);
+	private MouvementRaquettes laRaquette2=new MouvementRaquettes(raquetteP2,decor);
+	private String state;
 
 
 
 	public void mettreEnPause_Reprendre(){
-		this.pause= !pause;
+		if (this.state=="En pause"){this.state="En jeu";}
+		else{this.state="En pause";}
 	}
-	@Override
-	public void lancerJeu() throws InterruptedException {
-		// TODO Auto-generated method stub
-
-		while (score.limiteAtteinte(10)){
-			laBalle= new MouvementBalle(balle, decor, raquetteP1, raquetteP2, score );
-			lesRaquettes = new MouvementRaquettes(raquetteP1, raquetteP2, decor, directionP1, directionP2);
-			while(decor.getBalleStaysInTheField()&&!pause){
-				laBalle.run();
-				lesRaquettes.run();
-				System.out.println("Je continue à jouer");
-			}
-
-
-		}
-
+	public Score getScore(){
+		return this.score;
 	}
-
-	@Override
+		@Override
 	public void setDirectionP1(int direction) {
 		// TODO Auto-generated method stub
-		this.directionP1=direction;
+		this.laRaquette1.deplace(direction);
 	}
 	@Override
 	public void setDirectionP2(int direction) {
 		// TODO Auto-generated method stub
-		this.directionP2=direction;
+		this.laRaquette2.deplace(direction);
 	}
 	@Override
 	public void setSpeed(int vitesse) {
 		// TODO Auto-generated method stub
 		this.speed=vitesse;
 	}
-
+	public String getState(){
+		return this.state;
+	}
 	@Override
 	public Balle getBalle() {
 		// TODO Auto-generated method stub
+		laBalle.deplace();
 		return this.balle;
 	}
 

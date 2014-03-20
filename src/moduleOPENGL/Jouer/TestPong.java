@@ -21,7 +21,9 @@ public class TestPong extends Game
 
     public void init()
     {
+    	System.out.println("1");
         Display.setTitle("PACT:Pong");
+        System.out.println("2");
 
         // Initialize OpenGL
         glMatrixMode(GL_PROJECTION);
@@ -147,7 +149,10 @@ public class TestPong extends Game
 
     public static void main(String[] args)
     {
-        new TestPong();
+    	System.out.println("on entre dans le main");
+       TestPong test= new TestPong();
+        test.gameLoop();
+       
     }
 
 }

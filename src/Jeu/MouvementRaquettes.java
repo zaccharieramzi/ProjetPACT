@@ -1,75 +1,43 @@
 package Jeu;
 
-public class MouvementRaquettes implements Runnable {
+public class MouvementRaquettes {
 
-	RaquetteInterface raquetteP1;
-	RaquetteInterface raquetteP2;
+	Raquette raquette;
 	DecorInterface decor;
-	int j1;
-	int j2;
 	boolean balleStaysInTheField;
-	public MouvementRaquettes(RaquetteInterface raquetteP1,RaquetteInterface raquetteP2,DecorInterface decor, int directionP1, int directionP2){
+	public MouvementRaquettes(Raquette raquette,DecorInterface decor){
 
-		this.raquetteP1=raquetteP1;
-		this.raquetteP2=raquetteP2;
+		this.raquette=raquette;
 		this.decor=decor;
-		this.j1=directionP1;
-		this.j2=directionP2;
 	}
 
-	public void run(){
+	public void deplace(int j){
 
 
-		if (j1==1){
-			double y = raquetteP1.getY();
-			raquetteP1.setY(y-raquetteP1.getSpeed());
-			if (raquetteP1.isAtLimitsY(decor)){
-				if (y<0){
-					raquetteP1.setY(-decor.getY()/2+raquetteP1.getWidth()/2);
+		if (j==1){
+			raquette.move();
+			if (raquette.isAtLimitsY(decor)){
+				if (raquette.getY()<0){
+					raquette.setY(-decor.getY()/2+raquette.getWidth()/2);
 				}
 				else{
-					raquetteP1.setY(decor.getY()/2-raquetteP1.getWidth()/2);
+					raquette.setY(decor.getY()/2-raquette.getWidth()/2);
 				}
 			}
 		}
 		else {
-			double y = raquetteP1.getY();
-			raquetteP1.setY(y+raquetteP1.getSpeed());
-			if (raquetteP1.isAtLimitsY(decor)){
-				if (y<0){
-					raquetteP1.setY(-decor.getY()/2+raquetteP1.getWidth()/2);
+			raquette.setDy(-raquette.getDy());
+			if (raquette.isAtLimitsY(decor)){
+				if (raquette.getY()<0){
+					raquette.setY(-decor.getY()/2+raquette.getWidth()/2);
 				}
 				else{
-					raquetteP1.setY(decor.getY()/2-raquetteP1.getWidth()/2);
+					raquette.setY(decor.getY()/2-raquette.getWidth()/2);
 				}
 			}
 		}
 
-		if (j2==1){
-			double y = raquetteP2.getY();
-			raquetteP2.setY(y-raquetteP2.getSpeed());
-			if (raquetteP2.isAtLimitsY(decor)){
-				if (y<0){
-					raquetteP2.setY(-decor.getY()/2+raquetteP2.getWidth()/2);
-				}
-				else{
-					raquetteP2.setY(decor.getY()/2-raquetteP2.getWidth()/2);
-				}
-			}
-		}
-		else {
-			double y = raquetteP2.getY();
-			raquetteP2.setY(y+raquetteP2.getSpeed());
-			if (raquetteP2.isAtLimitsY(decor)){
-				if (y<0){
-					raquetteP2.setY(-decor.getY()/2+raquetteP2.getWidth()/2);
-				}
-				else{
-					raquetteP2.setY(decor.getY()/2-raquetteP2.getWidth()/2);
-				}
-			}
-		}
-		this.balleStaysInTheField=decor.getBalleStaysInTheField();
+				this.balleStaysInTheField=decor.getBalleStaysInTheField();
 
 	}
 }

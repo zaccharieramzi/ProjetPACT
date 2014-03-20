@@ -4,20 +4,21 @@ public class Tools implements MovingObject {
 
 	private double x;
 	private double y;
-	public Tools(double x, double y, double z, double theta,double phi, int v) {
+	public Tools(double x, double y, double z, double dx ,double dy, double dz) {
 		super();
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.theta = theta;
-		this.v = v;
-		this.phi=phi;
+		this.dx=dx;
+		this.dy=dy;
+		this.dz=dz;
+		
 	}
 
 	private double z;
-	private double theta;
-	private double phi;
-	private int v;
+	private double dx;
+	private double dy;
+	private double dz;
 	@Override
 	public double getX() {
 		// TODO Auto-generated method stub
@@ -37,15 +38,15 @@ public class Tools implements MovingObject {
 	}
 
 	@Override
-	public double getAngleTheta() {
+	public double getDx() {
 		// TODO Auto-generated method stub
-		return this.theta;
+		return this.dx;
 	}
 
 	@Override
-	public int getSpeed() {
+	public double getDy() {
 		// TODO Auto-generated method stub
-		return this.v;
+		return this.dy;
 	}
 
 	@Override
@@ -67,15 +68,15 @@ public class Tools implements MovingObject {
 	}
 
 	@Override
-	public void setAngleTheta(double theta) {
+	public void setDx(double dx) {
 		// TODO Auto-generated method stub
-		this.theta=theta;
+		this.dx=dx;
 	}
 
 	@Override
-	public void setSpeed(int v) {
+	public void setDy(double dy) {
 		// TODO Auto-generated method stub
-		this.v=v;
+		this.dy=dy;
 	}
 
 	@Override
@@ -97,15 +98,15 @@ public class Tools implements MovingObject {
 	}
 
 	@Override
-	public double getAnglePhi() {
+	public double getDz() {
 		// TODO Auto-generated method stub
-		return this.phi;
+		return this.dz;
 	}
 
 	@Override
-	public void setAnglePhi(double phi) {
+	public void setDz(double dz) {
 		// TODO Auto-generated method stub
-		this.phi=phi;
+		this.dz=dz;
 	}
 
 	@Override
@@ -114,8 +115,15 @@ public class Tools implements MovingObject {
 		this.setX(0);
 		this.setY(0);
 		this.setZ(0);
-		this.setAnglePhi(0);
-		this.setAngleTheta(0);
+		
+	}
+
+	@Override
+	public void move() {
+		// TODO Auto-generated method stub
+		this.x=+this.dx;
+		this.y=+this.dy;
+		this.z=+this.dz;
 	}
 
 }

@@ -15,27 +15,17 @@ public class TableDePingPong  implements DecorInterface{
 	}
 
 	@Override
-	public void Rebond(BalleInterface b) {
+	public void Rebond(Balle b) {
 		// TODO Auto-generated method stub
 		if (b.isAtLimitsY(this))
 		{
-			if (b.getY()<0)
-			{
-				double theta = b.getAngleTheta();
-				b.setAngleTheta(theta-Math.PI/2);
-				
-			}
-			else
-			{
-				double theta = b.getAngleTheta();
-				b.setAngleTheta(theta+Math.PI/2);
-			}
+			b.setDx(-b.getDx());
 			
 		}
 		if (b.isAtLimitsZ(this))
 		{
 			
-			
+			b.setDz(-b.getDz());
 		}
 		
 	}

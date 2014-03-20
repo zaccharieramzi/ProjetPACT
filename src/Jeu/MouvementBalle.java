@@ -1,23 +1,23 @@
 package Jeu;
 
-public class MouvementBalle implements Runnable {
+public class MouvementBalle {
 
 	Balle balle;
 	DecorInterface decor;
-	RaquetteInterface raquetteP1;
-	RaquetteInterface raquetteP2;
-	ScoreInterface score;
+	Raquette raquetteP1;
+	Raquette raquetteP2;
+	Score score;
 	double x;
 	double y;
 	double z;
-	double theta;
-	double phi;
-	double alea=Math.random()*Math.PI*2;;
-	int speed;
+	double dx;
+	double dy;
+	double alea=Math.random()*Math.PI*2;
+	double dz;
 	boolean balleStaysInTheField;
 
 
-	public MouvementBalle(BalleInterface balle, DecorInterface decor, RaquetteInterface raquetteP1, RaquetteInterface raquetteP2, ScoreInterface score){
+	public MouvementBalle(Balle balle, DecorInterface decor, Raquette raquetteP1, Raquette raquetteP2, Score score){
 		this.balle=(Balle) balle;
 		this.decor=decor;
 		this.raquetteP1=raquetteP1;
@@ -26,16 +26,14 @@ public class MouvementBalle implements Runnable {
 		this.x=balle.getX();
 		this.y=balle.getY();
 		this.z=balle.getZ();
-		this.theta=balle.getAngleTheta();
-		this.phi=balle.getAnglePhi();
-		this.speed=balle.getSpeed();
+		this.dx=balle.getDx();
+		this.dy=balle.getDy();
+		this.dz=balle.getDz();
 		this.balleStaysInTheField=decor.getBalleStaysInTheField();
 	};
-	public void run() {
-//System.out.println("C'est bon");
-		balle.setX(x+(1/100)*speed*Math.sin(theta)*Math.cos(phi));
-		balle.setY(y+(1/100)*speed*Math.sin(theta)*Math.sin(phi));
-		balle.setZ(z+(1/100)*speed*Math.cos(theta));
+	public void deplace() {
+
+		balle.move();
 		if (balle.isAtLimitsX(decor)){
 			decor.Rebond(balle);
 		}
@@ -54,7 +52,7 @@ public class MouvementBalle implements Runnable {
 				score.setP2Score(i+1);
 				System.out.println("La balle est sortie est et le joueur 2 a gagné un point");
 				balle.reInitialize();
-				balle.setAnglePhi(alea);
+				balle.setDx(alea);
 				/*FIN DE LA MANCHE*/
 				}
 			}
@@ -69,7 +67,7 @@ public class MouvementBalle implements Runnable {
 					score.setP1Score(i+1);
 					System.out.println("La balle est sortie est et le joueur 1 a gagné un point, son score est de "+score.getP1Score());
 					balle.reInitialize();
-					balle.setAnglePhi(alea);
+					balle.setDx(alea);
 					System.out.println("Voilà le nouvel angle choisi "+alea);
 					/*FIN DE LA MANCHE*/
 				}

@@ -12,6 +12,6 @@ public interface IGControleurInterface {
 	void mettreEnPause_Reprendre();
 
 	
-	void lancerJeu() throws InterruptedException;
+	
 
 }
