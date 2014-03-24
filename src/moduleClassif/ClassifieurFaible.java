@@ -26,6 +26,7 @@ public class ClassifieurFaible {
 		this.labels = labels;
 
 		int i, j, p;
+		//test
 		String[] labelshape = null;
 		int[] index_threshold_feature = null;
 		double[] error_feature = null;
